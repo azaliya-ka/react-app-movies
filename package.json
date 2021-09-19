@@ -1,0 +1,19 @@
+{
+  "name": "netflix-roulette",
+  "version": "1.0.0",
+  "description": "service that offers films",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azaliyaa/netflix-roulette.git"
+  },
+  "author": "Azaliia Kasimova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Azaliyaa/netflix-roulette/issues"
+  },
+  "homepage": "https://github.com/Azaliyaa/netflix-roulette#readme"
+}
