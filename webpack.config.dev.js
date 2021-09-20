@@ -5,7 +5,7 @@ module.exports = {
    entry: './src/index.js',
    output: {
       path: path.resolve(__dirname, 'dev'),
-      filename: 'index_bundle.js'
+      filename: 'index_bundle.js',
    },
    mode:'development',
    module: {
@@ -19,6 +19,13 @@ module.exports = {
         }
       ]
    },
+   watch: true,
    devtool: 'source-map',
+   devServer: {
+      contentBase: path.join(__dirname, 'dev'),
+      compress: true,
+      port: 3000,
+      open: true
+   },
    plugins: [new HtmlWebpackPlugin()],
 };
