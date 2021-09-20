@@ -4,7 +4,8 @@
   "description": "service that offers films",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "start": "webpack-dev-server --mode development --open --hot",
+    "build": "webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,17 @@
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1"
   }
 }
