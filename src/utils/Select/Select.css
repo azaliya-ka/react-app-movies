@@ -1,0 +1,16 @@
+.select {
+    width: 150px;
+    height: 44px;
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+/* .select:focus > option:checked {
+    background-color: transparent;
+} */

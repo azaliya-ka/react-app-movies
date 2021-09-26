@@ -1,0 +1,127 @@
+.home__background {
+    background-color: #888888;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.search__block {
+    box-sizing: border-box;
+    padding: 20px 56px 0 60px;
+    width: 1200px;
+    height: 396px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 1);
+    background-image: url("./../../images/home_background.svg");
+}
+
+.search__addMovieLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.search__iconNorm, .search__iconBold {
+    font-size: 20px;
+    color: #F65261;
+    font-weight: 500;
+}
+
+.search__iconBold {
+    font-weight: 900;
+}
+
+.search__addButton {
+    color: #F65261;
+    background: rgba(96, 96, 96, 0.68);
+    width: 177px;
+    height: 46px;
+}
+
+.search__text {
+    font-size: 40px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 300;
+    line-height: 49px;
+    padding-top: 9px;
+}
+
+.search__input {
+    margin-top: 38px;
+    background: rgba(50, 50, 50, 0.8);
+    padding-left: 21px;
+}
+
+.search__button {
+    width: 233px;
+    margin-left: 14px;
+    margin-top: 38px;
+}
+
+.movies {
+    width: 1200px;
+    background-color: #232323;
+    box-sizing: border-box;
+    padding: 14px 40px 0 59px;
+    height: 600px;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filters__text {
+    display: flex;
+}
+
+.filters__item {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 30px;
+    text-transform: uppercase;
+}
+
+.filters__item:first-of-type {
+    margin-left: 0;
+}
+
+.filters__sort {
+    font-size: 16px;
+    line-height: 20px;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.filters__sortSelect {
+    margin-left: 31px;
+}
+
+/* .filter__border {
+    margin-top: 22px;
+    width: 100%;
+    height: 1px;
+    background-color: #080707;
+} */
+
+.movies__found, .movies__count {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+
+.movies__count {
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.footer {
+    background-color: #424242;
+    text-align: center;
+    width: 1200px;
+    height: 70px;
+    box-sizing: border-box;
+    padding-top: 23px;
+}
