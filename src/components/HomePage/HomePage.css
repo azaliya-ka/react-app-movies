@@ -52,7 +52,11 @@
     width: 1200px;
     background-color: #232323;
     box-sizing: border-box;
-    padding: 0 40px 0 59px;
+    padding: 14px 40px 0 59px;
+}
+
+.movies__text {
+    padding-top: 20px;
 }
 
 .movies__text, .movies__count {
