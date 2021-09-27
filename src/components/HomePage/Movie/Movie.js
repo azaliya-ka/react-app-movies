@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from "prop-types";
 import './Movie.css'
 
 const Movie = ({ film }) => {
     return (
-      <div key={film.name}>
+      <div>
         <img src={film.picture} className='movie' />
         <div className='movies__name'>
           <span>{film.name}</span>
@@ -13,5 +14,9 @@ const Movie = ({ film }) => {
       </div>
     );
 }
+
+Movie.propTypes = {
+  film: PropTypes.object
+};
 
 export { Movie }

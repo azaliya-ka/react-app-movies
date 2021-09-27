@@ -30,7 +30,7 @@ const HomePage = () => {
         <div className='movies__found'>
           {films.map(film => {
             return (
-              <Movie film={film} />
+              <Movie film={film} key={film.name}/>
             )
           })}
         </div>
