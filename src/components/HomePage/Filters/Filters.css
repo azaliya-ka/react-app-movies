@@ -1,0 +1,39 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.filters__text {
+    display: flex;
+}
+
+.filters__item {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 30px;
+    text-transform: uppercase;
+}
+
+.filters__item:first-of-type {
+    margin-left: 0;
+}
+
+.filters__sort {
+    font-size: 16px;
+    line-height: 20px;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.filters__sortSelect {
+    margin-left: 31px;
+}
+
+/* .filter__border {
+    margin-top: 22px;
+    width: 100%;
+    height: 1px;
+    background-color: #080707;
+} */

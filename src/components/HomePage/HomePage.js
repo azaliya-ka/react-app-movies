@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Button, InputText, Select } from './../../utils'
-import { movieFilters, sortMovies } from './../../constants'
+import { Button, InputText } from './../../utils'
+import { Movie } from './Movie/Movie'
+import { Filters } from './Filters/Filters'
+import { films } from '../../MockedData'
 import './HomePage.css'
-  
+
 const HomePage = () => {
   const [moviesCount, setMoviesCount] = useState(39);
 
@@ -21,22 +23,17 @@ const HomePage = () => {
         <Button value='Search' buttonClass='search__button' />
       </div>
       <div className='movies'>
-        <div className='filters'>
-          <div className='filters__text'>
-            {movieFilters.map(value => {
-              return (
-                <div className='filters__item' key={value}>{value}</div>
-              )
-            })}
-          </div>
-          <div>
-            <span className='filters__sort'>Sort by</span>
-            <Select options={sortMovies} selectClass='filters__sortSelect' />
-          </div>
-        </div>
+        <Filters />
         <div className='movies__found'>
           <span className='movies__count'>{moviesCount}</span>
           <span>movies found</span>
+        </div>
+        <div className='films'>
+          {films.map(film => {
+            return (
+              <Movie film={film} />
+            )
+          })}
         </div>
       </div>
       <footer className='footer'>

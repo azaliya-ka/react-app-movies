@@ -9,8 +9,18 @@
     line-height: 20px;
     color: #FFF;
     text-transform: uppercase;
+    appearance: none;
 }
 
-/* .select:focus > option:checked {
-    background-color: transparent;
-} */
+.container {
+    position: relative;
+    display: inline;
+}
+
+.container::after {
+    content: "\1F783";
+    color: #F65261;
+    position: absolute;
+    top: -7px;
+    right: 0;
+}

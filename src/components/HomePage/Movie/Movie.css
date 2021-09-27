@@ -1,0 +1,31 @@
+.movie {
+    height: 466px;
+}
+.movies__name {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    opacity: 0.7;
+    padding-top: 13px;
+}
+
+.movies__year {
+    border-radius: 4px;
+    width: 66px;
+    height: 26px;
+    border: 1px solid rgba(151, 151, 151, 0.5);
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 1px;
+}
+
+.movies__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    opacity: 0.5;
+    padding-top: 8px;
+    margin-bottom: 51px;
+}

@@ -4,14 +4,15 @@ import './Select.css'
   
 const Select = ({ options, selectClass }) => {
   return (
-    <select
+    <div className='container'>
+      <select
         className={cn(selectClass, 'select')}
-        
-    >
-    {options.map(value => {
-        return <option>{value}</option>
-    })}
-    </select>
+      >
+        {options.map(value => {
+            return <option key={value}>{value}</option>
+        })}
+      </select>
+    </div>
   );
 }
   
