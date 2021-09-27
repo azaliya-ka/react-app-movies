@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon } from './../Icon/Icon'
-import './Footer.css'
+import styles from './Footer.css'
 
 const Footer = () => {
     return (
-        <footer className='footer'>
+        <footer className={styles.footer}>
             <Icon />
         </footer>
     );

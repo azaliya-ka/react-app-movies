@@ -1,12 +1,12 @@
 import React from 'react';
 import cn from 'classnames'
-import './InputText.css'
+import styles from './InputText.css'
   
 const InputText = ({ placeholder, inputClass }) => {
   return (
     <input
         type='text'
-        className={cn(inputClass, 'input')}
+        className={cn(inputClass, styles.input)}
         placeholder={placeholder}
     />
   );

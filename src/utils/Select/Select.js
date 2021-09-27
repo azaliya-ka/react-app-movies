@@ -1,12 +1,12 @@
 import React from 'react';
 import cn from 'classnames'
-import './Select.css'
+import styles from './Select.css'
   
 const Select = ({ options, selectClass }) => {
   return (
-    <div className='container'>
+    <div className={styles.container}>
       <select
-        className={cn(selectClass, 'select')}
+        className={cn(selectClass, styles.select)}
       >
         {options.map(value => {
             return <option key={value}>{value}</option>

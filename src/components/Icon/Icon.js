@@ -1,11 +1,11 @@
 import React from 'react';
-import './Icon.css'
+import styles from './Icon.css'
 
 const Icon = () => {
     return (
         <div>
-            <span className='icon__bold'>netflix</span>
-            <span className='icon__norm'>roulette</span>
+            <span className={styles.icon__bold}>netflix</span>
+            <span className={styles.icon__norm}>roulette</span>
         </div>
     );
 }
