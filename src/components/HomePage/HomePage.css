@@ -20,16 +20,6 @@
     align-items: flex-start;
 }
 
-.search__iconNorm, .search__iconBold {
-    font-size: 20px;
-    color: #F65261;
-    font-weight: 500;
-}
-
-.search__iconBold {
-    font-weight: 900;
-}
-
 .search__addButton {
     color: #F65261;
     background: rgba(96, 96, 96, 0.68);
@@ -58,14 +48,14 @@
     margin-top: 38px;
 }
 
-.movies {
+.movies__block {
     width: 1200px;
     background-color: #232323;
     box-sizing: border-box;
     padding: 0 40px 0 59px;
 }
 
-.movies__found, .movies__count {
+.movies__text, .movies__count {
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
@@ -78,18 +68,9 @@
     margin-right: 6px;
 }
 
-.films {
+.movies__found {
     display: flex;
     width: 100%;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-
-.footer {
-    background-color: #424242;
-    text-align: center;
-    width: 1200px;
-    height: 70px;
-    box-sizing: border-box;
-    padding-top: 23px;
 }

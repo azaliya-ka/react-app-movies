@@ -1,0 +1,9 @@
+.icon__norm, .icon__bold {
+    font-size: 20px;
+    color: #F65261;
+    font-weight: 500;
+}
+
+.icon__bold {
+    font-weight: 900;
+}
