@@ -1,14 +1,22 @@
 import React from 'react';
-import { films } from '../pages/MockedData'
-import { isEmpty, isNil } from 'ramda';
 
-const ErrorBoundary  = ({ children }) => {
-    const isError = isEmpty(films) || isNil(films);
-    return (
-        <>
-            {isError ? <h1>Oops, something went wrong</h1> : children}
-        </>
-    );
-}
+class ErrorBoundary extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { hasError: false };
+    }
   
-export { ErrorBoundary  };
+    static getDerivedStateFromError(error) {
+      return { hasError: true };
+    }
+  
+    render() {
+      if (this.state.hasError) {
+        return <h1>Oops, something went wrong</h1>;
+      }
+  
+      return this.props.children; 
+    }
+  }
+  
+export { ErrorBoundary };
