@@ -5,7 +5,7 @@ import cn from 'classnames'
 import styles from './Filters.css'
 
 const Filters = () => {
-  const [checkedTab, setCheckedTab] = useState('all');
+  const [checkedTab, setCheckedTab] = useState(movieFilters[0]);
 
     return (
       <>
