@@ -1,0 +1,44 @@
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.filters__tabs {
+    display: flex;
+}
+
+.filters__item {
+    height: 44px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.filters__item:first-of-type {
+    margin-left: 0;
+}
+
+.filters__checked {
+    border-bottom: 1px solid #F65261;
+}
+
+.filters__sort {
+    font-size: 16px;
+    line-height: 20px;
+    opacity: 0.6;
+    text-transform: uppercase;
+}
+
+.filters__sortSelect {
+    margin-left: 31px;
+}
+
+.filter__border {
+    width: 100%;
+    height: 1px;
+    background-color: #080707;
+}

@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import { ErrorBoundary } from './ErrorBoundary'
+import { Home } from '../pages/Home/Home';
 
 class App extends Component {
     render() {
         return (
-            <h1>MY REACT APP</h1>
+            <ErrorBoundary>
+                <Home />
+            </ErrorBoundary>
         )
     }
 }

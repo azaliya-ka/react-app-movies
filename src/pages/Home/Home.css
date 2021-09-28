@@ -1,0 +1,80 @@
+.home__background {
+    background-color: #888888;
+    width: 100%;
+    color: #FFFFFF;
+}
+
+.search__block {
+    box-sizing: border-box;
+    padding: 20px 56px 0 60px;
+    width: 1200px;
+    height: 396px;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 1);
+    background-image: url("./../../images/home_background.svg");
+}
+
+.search__addMovieLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.search__addButton {
+    color: #F65261;
+    background: rgba(96, 96, 96, 0.68);
+    width: 177px;
+    height: 46px;
+}
+
+.search__text {
+    font-size: 40px;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    font-weight: 300;
+    line-height: 49px;
+    padding-top: 9px;
+}
+
+.search__input {
+    margin-top: 38px;
+    background: rgba(50, 50, 50, 0.8);
+    padding-left: 21px;
+}
+
+.search__button {
+    width: 233px;
+    margin-left: 14px;
+    margin-top: 38px;
+}
+
+.movies__block {
+    width: 1200px;
+    background-color: #232323;
+    box-sizing: border-box;
+    padding: 14px 40px 0 59px;
+}
+
+.movies__text {
+    padding-top: 20px;
+}
+
+.movies__text, .movies__count {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    margin-bottom: 28px;
+}
+
+.movies__count {
+    font-weight: 600;
+    margin-right: 6px;
+}
+
+.movies__found {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
