@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { Button, InputText } from './../../utils';
+import { Button, InputText } from '../../components';
 import { Movie } from './Movie/Movie';
 import { Filters } from './Filters/Filters';
-import { Footer } from './../Footer/Footer';
-import { Icon } from './../Icon/Icon';
-import { films } from '../../MockedData';
-import styles from './HomePage.css';
+import { Footer } from '../../components';
+import { Icon } from '../../components';
+import { films } from '../MockedData';
+import styles from './Home.css';
 
-console.log('styles', styles);
-
-const HomePage = () => {
-  const [moviesCount, setMoviesCount] = useState(39);
+const Home = () => {
+  const [moviesCount, setMoviesCount] = useState(0);
 
   return (
     <div className={styles.home__background}>
@@ -30,11 +28,7 @@ const HomePage = () => {
           <span>movies found</span>
         </div>
         <div className={styles.movies__found}>
-          {films.map(film => {
-            return (
-              <Movie film={film} key={film.name}/>
-            )
-          })}
+           {films.map(film => <Movie film={film} key={film.name}/>)}
         </div>
       </div>
       <Footer />
@@ -42,4 +36,4 @@ const HomePage = () => {
   );
 }
   
-export { HomePage };
+export { Home };

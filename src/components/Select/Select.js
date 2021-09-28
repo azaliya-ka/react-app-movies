@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames'
+import PropTypes from "prop-types";
 import styles from './Select.css'
   
 const Select = ({ options, selectClass }) => {
@@ -15,5 +16,10 @@ const Select = ({ options, selectClass }) => {
     </div>
   );
 }
+
+Select.propTypes = {
+  selectClass: PropTypes.string,
+  options: PropTypes.arrayOf(PropTypes.string)
+};
   
 export { Select };

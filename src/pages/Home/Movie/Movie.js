@@ -16,7 +16,15 @@ const Movie = ({ film }) => {
 }
 
 Movie.propTypes = {
-  film: PropTypes.object
-};
+  film: PropTypes.shape({
+    picture: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    year: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    description: PropTypes.string
+  })
+}
 
 export { Movie }

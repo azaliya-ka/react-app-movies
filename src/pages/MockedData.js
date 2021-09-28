@@ -1,9 +1,9 @@
-import PulpFiction from './images/1.png';
-import BohemianRhapsody from './images/2.png';
-import KillBill from './images/3.png';
-import Avengers from './images/4.png';
-import Inception from './images/5.png';
-import ReservoirDogs from './images/6.png';
+import PulpFiction from './../images/1.png';
+import BohemianRhapsody from './../images/2.png';
+import KillBill from './../images/3.png';
+import Avengers from './../images/4.png';
+import Inception from './../images/5.png';
+import ReservoirDogs from './../images/6.png';
 
 export const films = [
     {

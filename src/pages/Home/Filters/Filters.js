@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Select } from './../../../utils'
-import { movieFilters, sortMovies } from './../../../constants'
+import { Select } from '../../../components'
+import { movieFilters, sortMovies } from '../../../components/constants'
 import cn from 'classnames'
 import styles from './Filters.css'
 

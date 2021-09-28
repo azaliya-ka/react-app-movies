@@ -1,5 +1,5 @@
 import React from 'react';
-import { films } from './../../MockedData'
+import { films } from '../pages/MockedData'
 import { isEmpty, isNil } from 'ramda';
 
 const ErrorBoundary  = ({ children }) => {

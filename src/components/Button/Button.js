@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames'
+import PropTypes from "prop-types";
 import styles from './Button.css'
   
 const Button = ({ value, buttonClass }) => {
@@ -11,5 +12,10 @@ const Button = ({ value, buttonClass }) => {
     />
   );
 }
+
+Button.propTypes = {
+  value: PropTypes.string,
+  buttonClass: PropTypes.string
+};
   
 export { Button };
