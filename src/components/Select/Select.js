@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames'
 import PropTypes from "prop-types";
+import { DropdownArrow } from './../../images/icons'
 import styles from './Select.css'
   
 const Select = ({ options, selectClass }) => {
@@ -13,6 +14,7 @@ const Select = ({ options, selectClass }) => {
             return <option key={value}>{value}</option>
         })}
       </select>
+      <DropdownArrow />
     </div>
   );
 }

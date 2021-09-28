@@ -1,6 +1,6 @@
 .select {
-    width: 150px;
-    height: 44px;
+    width: 134px;
+    height: 20px;
     background-color: transparent;
     border: 0;
     outline: none;
@@ -10,17 +10,12 @@
     color: #FFF;
     text-transform: uppercase;
     appearance: none;
+    cursor: pointer;
 }
 
 .container {
-    position: relative;
-    display: inline;
-}
-
-.container::after {
-    content: "\1F783";
-    color: #F65261;
-    position: absolute;
-    top: -7px;
-    right: 0;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
 }
