@@ -26,6 +26,10 @@
     border-bottom: 1px solid #F65261;
 }
 
+.filters__selectContainer {
+    width: 150px;
+}
+
 .filters__sortBlock {
     display: flex;
     align-items: baseline;
@@ -38,8 +42,26 @@
     text-transform: uppercase;
 }
 
-.filters__sortSelect {
+.filters__select {
+    height: 20px;
+    display: flex;
+    align-items: baseline;
+    padding: 0 8px 0 0;
+    color: #FFF;
+    background-color: #232323;
+}
+
+.filters__selectContainer {
     margin-left: 31px;
+}
+
+.filters__selectArrow {
+    top: 1px;
+    right: 0;
+}
+
+.icon {
+    width: 12px;
 }
 
 .filter__border {

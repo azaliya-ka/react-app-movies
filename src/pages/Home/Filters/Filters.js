@@ -25,7 +25,13 @@ const Filters = () => {
           </div>
           <div className={styles.filters__sortBlock}>
             <span className={styles.filters__sort}>Sort by</span>
-            <Select options={sortMovies} selectClass={styles.filters__sortSelect} />
+            <Select
+              options={sortMovies}
+              selectClass={styles.filters__select}
+              containerClass={styles.filters__selectContainer}
+              arrowClass={styles.filters__selectArrow}
+              iconClass={styles.icon}
+            />
           </div>
         </div>
         <div className={styles.filter__border} />

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, InputText } from '../../components';
 import { Movie } from './Movie/Movie';
 import { Filters } from './Filters/Filters';
+import { AddMovie } from './../AddMovie/AddMovie';
 import { Footer } from '../../components';
 import { Icon } from '../../components';
 import { films } from '../MockedData';
@@ -9,17 +10,29 @@ import styles from './Home.css';
 
 const Home = () => {
   const [moviesCount, setMoviesCount] = useState(0);
+  const [isAddMovieActive, setIsAddMovieActive] = useState(false);
+
+  const onMovieButtonsClick = () => {
+    setIsAddMovieActive((isAddMovieActive) => !isAddMovieActive);
+  }
 
   return (
     <div className={styles.home__background}>
+      {isAddMovieActive && <AddMovie onClick={onMovieButtonsClick} />}
       <div className={styles.search__block}>
         <div className={styles.search__addMovieLine}>
           <Icon />
-          <Button value='+ add movie' buttonClass={styles.search__addButton} />
+          <Button
+            value='+ add movie'
+            buttonClass={styles.search__addButton}
+            onClick={onMovieButtonsClick}
+          />
         </div>
         <div className={styles.search__text}>find your movie</div>
-        <InputText placeholder='What do you want to watch?' inputClass={styles.search__input} />
-        <Button value='Search' buttonClass={styles.search__button} />
+        <div className={styles.search__container}>
+          <InputText placeholder='What do you want to watch?' inputClass={styles.search__input} />
+          <Button value='Search' buttonClass={styles.search__button} />
+        </div>
       </div>
       <div className={styles.movies__block}>
         <Filters />
