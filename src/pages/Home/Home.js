@@ -6,7 +6,7 @@ import { AddMovie } from './../AddMovie/AddMovie';
 import { Footer } from '../../components';
 import { Icon } from '../../components';
 import { films } from '../MockedData';
-import styles from './Home.css';
+import styles from './Home.module.css';
 
 const Home = () => {
   const [moviesCount, setMoviesCount] = useState(0);

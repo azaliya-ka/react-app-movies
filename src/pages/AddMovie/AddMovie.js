@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import { InputText, TextArea, Button, Select } from './../../components'
-import { CloseButton, CalendarIcon } from './../../images/icons';
+import { InputText, TextArea, Button, Select, DateInput } from './../../components'
+import { CloseButton } from './../../images/icons';
 import { genre } from './../../components/constants';
-import styles from './AddMovie.css';
+import styles from './AddMovie.module.css';
   
 const AddMovie = ({ onClick }) => {
   return (
@@ -19,15 +19,10 @@ const AddMovie = ({ onClick }) => {
             containerClass={styles.input__container}
             placeholder='Moana'
           />
-          <div className={styles.date__container}>
-            <InputText
-              label='release date'
-              inputClass={styles.rightInputs}
-              containerClass={styles.input__container}
-              placeholder='Select Date'
-            />
-            <span className={styles.calendar}><CalendarIcon /></span>
-          </div>
+          <DateInput
+            label='release date'
+            containerClass={styles.input__container}
+          />
           <InputText
             label='movie url'
             containerClass={styles.input__container}

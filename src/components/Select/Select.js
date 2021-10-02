@@ -1,8 +1,8 @@
 import React from 'react';
-import cn from 'classnames'
+import cn from 'classnames';
 import PropTypes from "prop-types";
 import { DropdownArrow } from './../../images/icons'
-import styles from './Select.css'
+import styles from './Select.module.css'
   
 const Select = ({ options, label, selectClass, containerClass, arrowClass, labelClass, iconClass }) => {
   return (

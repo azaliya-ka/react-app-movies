@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Select } from '../../../components'
 import { movieFilters, sortMovies } from '../../../components/constants'
 import cn from 'classnames'
-import styles from './Filters.css'
+import styles from './Filters.module.css'
 
 const Filters = () => {
   const [checkedTab, setCheckedTab] = useState(movieFilters[0]);

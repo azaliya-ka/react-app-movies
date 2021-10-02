@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames'
 import PropTypes from "prop-types";
-import styles from './InputText.css'
+import styles from './InputText.module.css'
   
 const InputText = ({ placeholder, inputClass, label, containerClass }) => {
   return (

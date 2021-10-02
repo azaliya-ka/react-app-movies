@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames'
 import PropTypes from "prop-types";
-import styles from './TextArea.css';
+import styles from './TextArea.module.css';
   
 const TextArea = ({ placeholder, inputClass, label, containerClass }) => {
   return (
