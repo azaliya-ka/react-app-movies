@@ -1,6 +1,8 @@
 .movie {
     height: 466px;
+    cursor: pointer;
 }
+
 .movies__name {
     display: flex;
     justify-content: space-between;
@@ -28,4 +30,20 @@
     opacity: 0.5;
     padding-top: 8px;
     margin-bottom: 51px;
+}
+
+.container {
+    position: relative;
+}
+
+.icon {
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    right: 14px;
+}
+
+.container:hover > .icon {
+    display: inline;
 }

@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { ContextMenu } from './../../../images/icons';
 import styles from './Movie.module.css'
 
 const Movie = ({ film }) => {
     return (
-      <div>
+      <div className={styles.container}>
+        <span className={styles.icon}><ContextMenu /></span>
         <img src={film.picture} className={styles.movie} />
         <div className={styles.movies__name}>
           <span>{film.name}</span>
