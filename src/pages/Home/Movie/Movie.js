@@ -4,20 +4,29 @@ import cn from 'classnames'
 import { ContextMenu, CloseButton } from './../../../images/icons';
 import styles from './Movie.module.css'
 
+const ContextWindow = ({ windowOpened, setWindowOpened }) => {
+  return (
+    <div
+      className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
+    >
+      <span className={styles.close} onClick={() => setWindowOpened(false)}>
+        <CloseButton className={styles.close__icon}/>
+      </span>
+      <div className={styles.window__buttons}>Edit</div>
+      <div className={styles.window__buttons}>Delete</div>
+    </div>
+  );
+}
+
 const Movie = ({ film }) => {
     const [windowOpened, setWindowOpened] = useState(false);
 
     return (
       <div className={styles.container}>
-        <div
-          className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
-        >
-          <span className={styles.close} onClick={() => setWindowOpened(false)}>
-            <CloseButton className={styles.close__icon}/>
-          </span>
-          <div className={styles.window__buttons}>Edit</div>
-          <div className={styles.window__buttons}>Delete</div>
-        </div>
+        <ContextWindow
+          windowOpened={windowOpened}
+          setWindowOpened={setWindowOpened}
+        />
         <span
           className={styles.icon}
           onClick={() => setWindowOpened(true)}
