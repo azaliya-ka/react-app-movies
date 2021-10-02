@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CloseButton = () => {
+const CloseButton = ({ className }) => {
   return (
-    <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={className} width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M1.47099 1.15426L21.529 21.2122" stroke="white" strokeWidth="2" strokeLinecap="round"/>
       <path d="M21.529 1.15426L1.47103 21.2122" stroke="white" strokeWidth="2" strokeLinecap="round"/>
     </svg>

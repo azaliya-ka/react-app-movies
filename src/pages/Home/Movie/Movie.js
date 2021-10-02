@@ -1,12 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
-import { ContextMenu } from './../../../images/icons';
+import cn from 'classnames'
+import { ContextMenu, CloseButton } from './../../../images/icons';
 import styles from './Movie.module.css'
 
 const Movie = ({ film }) => {
+    const [windowOpened, setWindowOpened] = useState(false);
+
     return (
       <div className={styles.container}>
-        <span className={styles.icon}><ContextMenu /></span>
+        <div
+          className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
+        >
+          <span className={styles.close} onClick={() => setWindowOpened(false)}>
+            <CloseButton className={styles.close__icon}/>
+          </span>
+          <div className={styles.window__buttons}>Edit</div>
+          <div className={styles.window__buttons}>Delete</div>
+        </div>
+        <span
+          className={styles.icon}
+          onClick={() => setWindowOpened(true)}
+        >
+          <ContextMenu />
+        </span>
         <img src={film.picture} className={styles.movie} />
         <div className={styles.movies__name}>
           <span>{film.name}</span>
