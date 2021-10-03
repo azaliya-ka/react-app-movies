@@ -11,10 +11,10 @@ const MovieWindow = ({ onClick, title, movieId }) => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    const movie = films.filter((film => {
+    const arr = films.filter((film => {
       return film.id === movieId;
     }))
-    setMovie(movie);
+    setMovie(arr[0]);
   }, [movieId])
 
   return (
@@ -34,7 +34,8 @@ const MovieWindow = ({ onClick, title, movieId }) => {
           <InputText
             label='title'
             containerClass={styles.input__container}
-            placeholder={!isNil(movie) ? movie.name : 'Moana'}
+            placeholder={!isNil(movie) ? '' : 'Moana'}
+            value={!isNil(movie) ? movie.name : ''}
           />
           <DateInput
             label='release date'
@@ -43,13 +44,13 @@ const MovieWindow = ({ onClick, title, movieId }) => {
           <InputText
             label='movie url'
             containerClass={styles.input__container}
-            placeholder='https://'
+            placeholder={!isNil(movie) ? '' : 'https://'}
           />
           <InputText
             label='rating'
             inputClass={styles.rightInputs}
             containerClass={styles.input__container}
-            placeholder='7.8'
+            placeholder={!isNil(movie) ? '' : '7.8'}
           />
           <Select
             label='genre'
@@ -62,13 +63,13 @@ const MovieWindow = ({ onClick, title, movieId }) => {
             label='runtime'
             inputClass={styles.rightInputs}
             containerClass={styles.input__container}
-            placeholder='minutes'
+            placeholder={!isNil(movie) ? '' : 'minutes'}
           />
         </div>
         <TextArea
           label='overview'
           containerClass={styles.input__container}
-          placeholder='Movie description'
+          placeholder={!isNil(movie) ? '' : 'Movie description'}
         />
         <div className={styles.buttons}>
           <Button value='reset'  buttonClass={styles.reset}/>
