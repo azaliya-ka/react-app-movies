@@ -1,23 +1,40 @@
-import React from 'react';
-import PropTypes from "prop-types";
-import { InputText, TextArea, Button, Select, DateInput } from './../../components'
-import { CloseButton } from './../../images/icons';
-import { genre } from './../../components/constants';
-import styles from './AddMovie.module.css';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { isNil } from 'ramda';
+import { InputText, TextArea, Button, Select, DateInput } from '../../components'
+import { CloseButton } from '../../images/icons';
+import { genre } from '../../components/constants';
+import { films } from './../MockedData';
+import styles from './MovieWindow.module.css';
   
-const AddMovie = ({ onClick }) => {
+const MovieWindow = ({ onClick, title, movieId }) => {
+  const [movie, setMovie] = useState(null);
+
+  useEffect(() => {
+    const movie = films.filter((film => {
+      return film.id === movieId;
+    }))
+    setMovie(movie);
+  }, [movieId])
+
   return (
     <div className={styles.background}>
       <div className={styles.container}>
-        <div onClick={onClick} className={styles.close}>
+        <div
+          onClick={() => {
+            onClick();
+            setMovie(null);
+          }}
+          className={styles.close}
+        >
           <span className={styles.closeButton}><CloseButton/></span>
         </div>
-        <p className={styles.title}>add movie</p>
+        <p className={styles.title}>{title}</p>
         <div className={styles.inputs__block}>
           <InputText
             label='title'
             containerClass={styles.input__container}
-            placeholder='Moana'
+            placeholder={!isNil(movie) ? movie.name : 'Moana'}
           />
           <DateInput
             label='release date'
@@ -62,8 +79,12 @@ const AddMovie = ({ onClick }) => {
   );
 }
 
-AddMovie.propTypes = {
+MovieWindow.propTypes = {
   onClick: PropTypes.func,
+  movieId: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
 };
   
-export { AddMovie };
+export { MovieWindow };

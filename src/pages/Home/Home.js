@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Button, InputText } from '../../components';
 import { Movie } from './Movie/Movie';
 import { Filters } from './Filters/Filters';
-import { AddMovie } from './../AddMovie/AddMovie';
+import { MovieWindow } from './../MovieWindow/MovieWindow';
+import { DeleteMovie } from './DeleteMovie/DeleteMovie';
 import { Footer } from '../../components';
 import { Icon } from '../../components';
 import { films } from '../MockedData';
@@ -11,21 +12,44 @@ import styles from './Home.module.css';
 const Home = () => {
   const [moviesCount, setMoviesCount] = useState(0);
   const [isAddMovieActive, setIsAddMovieActive] = useState(false);
+  const [isEditMovieActive, setIsEditMovieActive] = useState(false);
+  const [isDeleteMovieActive, setIsDeleteMovieActive] = useState(false);
+  const [movieId, setMovieId] = useState(null);
 
-  const onMovieButtonsClick = () => {
+  const onAddMovieClick = () => {
     setIsAddMovieActive((isAddMovieActive) => !isAddMovieActive);
+  }
+
+  const onEditMovieClick = () => {
+    setIsEditMovieActive((isEditMovieActive) => !isEditMovieActive);
+  }
+
+  const onDeleteMovieClick = () => {
+    setIsDeleteMovieActive((isDeleteMovieActive) => !isDeleteMovieActive);
+  }
+
+  const setFilmId = id => {
+    setMovieId(id);
   }
 
   return (
     <div className={styles.home__background}>
-      {isAddMovieActive && <AddMovie onClick={onMovieButtonsClick} />}
+      {isAddMovieActive && <MovieWindow onClick={onAddMovieClick} title='add movie' />}
+      {isEditMovieActive && (
+        <MovieWindow
+          onClick={onEditMovieClick}
+          title='edit movie'
+          movieId={movieId}
+        />
+      )}
+      {isDeleteMovieActive && <DeleteMovie onClick={onDeleteMovieClick} />}
       <div className={styles.search__block}>
         <div className={styles.search__addMovieLine}>
           <Icon />
           <Button
             value='+ add movie'
             buttonClass={styles.search__addButton}
-            onClick={onMovieButtonsClick}
+            onClick={onAddMovieClick}
           />
         </div>
         <div className={styles.search__text}>find your movie</div>
@@ -41,7 +65,17 @@ const Home = () => {
           <span>movies found</span>
         </div>
         <div className={styles.movies__found}>
-           {films.map(film => <Movie film={film} key={film.name}/>)}
+           {films.map(film => {
+             return (
+              <Movie
+                film={film}
+                key={film.id}
+                setFilmId={setFilmId}
+                onEditMovieClick={onEditMovieClick}
+                onDeleteMovieClick={onDeleteMovieClick}
+            />
+             )
+           })}
         </div>
       </div>
       <Footer />

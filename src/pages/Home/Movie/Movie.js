@@ -4,7 +4,7 @@ import cn from 'classnames'
 import { ContextMenu, CloseButton } from './../../../images/icons';
 import styles from './Movie.module.css'
 
-const ContextWindow = ({ windowOpened, setWindowOpened }) => {
+const ContextWindow = ({ windowOpened, setWindowOpened, onEditMovieClick, onDeleteMovieClick, setFilmId, id }) => {
   return (
     <div
       className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
@@ -12,13 +12,30 @@ const ContextWindow = ({ windowOpened, setWindowOpened }) => {
       <span className={styles.close} onClick={() => setWindowOpened(false)}>
         <CloseButton className={styles.close__icon}/>
       </span>
-      <div className={styles.window__buttons}>Edit</div>
-      <div className={styles.window__buttons}>Delete</div>
+      <div
+        className={styles.window__buttons}
+        onClick={() => {
+          onEditMovieClick();
+          setWindowOpened(false)
+          setFilmId(id);
+        }}>
+          Edit
+      </div>
+      <div
+        className={styles.window__buttons}
+        onClick={() => {
+          onDeleteMovieClick();
+          setWindowOpened(false)
+          setFilmId(id);
+        }}
+      >
+          Delete
+      </div>
     </div>
   );
 }
 
-const Movie = ({ film }) => {
+const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId }) => {
     const [windowOpened, setWindowOpened] = useState(false);
 
     return (
@@ -26,6 +43,10 @@ const Movie = ({ film }) => {
         <ContextWindow
           windowOpened={windowOpened}
           setWindowOpened={setWindowOpened}
+          onEditMovieClick={onEditMovieClick}
+          onDeleteMovieClick={onDeleteMovieClick}
+          setFilmId={setFilmId}
+          id={film.id}
         />
         <span
           className={styles.icon}
@@ -51,7 +72,8 @@ Movie.propTypes = {
       PropTypes.string,
       PropTypes.number
     ]),
-    description: PropTypes.string
+    description: PropTypes.string,
+    onMovieClick: PropTypes.func
   })
 }
 
