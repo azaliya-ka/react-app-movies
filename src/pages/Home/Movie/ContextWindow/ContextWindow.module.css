@@ -1,0 +1,41 @@
+.context__window {
+    display: none;
+    position: absolute;
+    width: 190px;
+    height: 111px;
+    background-color: #232323;
+    top: 6px;
+    right: 14px;
+    z-index: 11;
+    box-sizing: border-box;
+    padding-top: 30px;
+}
+
+.context__windowOpened {
+    display: block;
+}
+
+.close {
+    top: 6px;
+    right: 14px;
+    position: absolute;
+    z-index: 12;
+    cursor: pointer;
+}
+
+.close__icon {
+    width: 11px;
+}
+
+.window__buttons {
+    height: 34px;
+    font-size: 16px;
+    color: #FFF;
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 7px 0 0 23px;
+}
+
+.window__buttons:hover {
+    background-color: #F65261;
+}

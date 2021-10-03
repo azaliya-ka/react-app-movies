@@ -1,39 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
-import cn from 'classnames'
-import { ContextMenu, CloseButton } from './../../../images/icons';
+import { ContextMenu } from './../../../images/icons';
+import { ContextWindow } from './ContextWindow/ContextWindow';
 import styles from './Movie.module.css'
-
-const ContextWindow = ({ windowOpened, setWindowOpened, onEditMovieClick, onDeleteMovieClick, setFilmId, id }) => {
-  return (
-    <div
-      className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
-    >
-      <span className={styles.close} onClick={() => setWindowOpened(false)}>
-        <CloseButton className={styles.close__icon}/>
-      </span>
-      <div
-        className={styles.window__buttons}
-        onClick={() => {
-          onEditMovieClick();
-          setWindowOpened(false)
-          setFilmId(id);
-        }}>
-          Edit
-      </div>
-      <div
-        className={styles.window__buttons}
-        onClick={() => {
-          onDeleteMovieClick();
-          setWindowOpened(false)
-          setFilmId(id);
-        }}
-      >
-          Delete
-      </div>
-    </div>
-  );
-}
 
 const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId }) => {
     const [windowOpened, setWindowOpened] = useState(false);
@@ -74,7 +43,10 @@ Movie.propTypes = {
     ]),
     description: PropTypes.string,
     onMovieClick: PropTypes.func
-  })
+  }),
+  onEditMovieClick: PropTypes.func,
+  onDeleteMovieClick: PropTypes.func,
+  setFilmId: PropTypes.func,
 }
 
 export { Movie }
