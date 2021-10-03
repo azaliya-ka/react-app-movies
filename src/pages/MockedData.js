@@ -11,41 +11,47 @@ export const films = [
         description: 'Action & Adventure',
         year: '2004',
         picture: PulpFiction,
-        id: 1
+        id: 1,
+        genre: 'crime'
     },
     {
         name: 'Bohemian Rhapsody',
         description: 'Drama, Biography, Music',
         year: '2003',
         picture: BohemianRhapsody,
-        id: 2
+        id: 2,
+        genre: 'comedy'
     },
     {
         name: 'Kill Bill: Vol 2',
         description: 'Oscar winning Movie',
         year: '1994',
         picture: KillBill,
-        id: 3
+        id: 3,
+        genre: 'crime'
     },
     {
         name: 'Avengers: War of Infinity',
         description: 'Action & Adventure',
         year: '2004',
         picture: Avengers,
-        id: 4
+        id: 4,
+        genre: 'horror'
     },
     {
         name: 'Inception',
         description: 'Action & Adventure',
         year: '2003',
         picture: Inception,
-        id: 5
+        id: 5,
+        genre: 'documentary'
     },
     {
         name: 'Reservoir dogs',
         description: 'Oscar winning Movie',
         year: '1993',
         picture: ReservoirDogs,
-        id: 6
+        id: 6,
+        genre: 'documentary'
     }
 ]

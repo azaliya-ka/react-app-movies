@@ -27,13 +27,13 @@ const ContextWindow = ({
 
     return (
         <div
-        className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
+            className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
         >
-        <span className={styles.close} onClick={() => setWindowOpened(false)}>
-            <CloseButton className={styles.close__icon}/>
-        </span>
-        <div className={styles.window__buttons} onClick={onEditClick}>Edit</div>
-        <div className={styles.window__buttons} onClick={onDeleteClick}> Delete</div>
+            <span className={styles.close} onClick={() => setWindowOpened(false)}>
+                <CloseButton className={styles.close__icon}/>
+            </span>
+            <div className={styles.window__buttons} onClick={onEditClick}>Edit</div>
+            <div className={styles.window__buttons} onClick={onDeleteClick}> Delete</div>
         </div>
     );
 }

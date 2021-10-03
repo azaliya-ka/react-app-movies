@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, InputText } from '../../components';
 import { Movie } from './Movie/Movie';
 import { Filters } from './Filters/Filters';
+import { isNil } from 'ramda';
+import { movieFilters } from './../../components/constants';
 import { MovieWindow } from './../MovieWindow/MovieWindow';
 import { DeleteMovie } from './DeleteMovie/DeleteMovie';
 import { Footer } from '../../components';
@@ -10,11 +12,24 @@ import { films } from '../MockedData';
 import styles from './Home.module.css';
 
 const Home = () => {
+  const [sortedFilms, setSortedFilms] = useState(null);
+  const [genre, setGenre] = useState(movieFilters[0]);
   const [moviesCount, setMoviesCount] = useState(0);
   const [isAddMovieActive, setIsAddMovieActive] = useState(false);
   const [isEditMovieActive, setIsEditMovieActive] = useState(false);
   const [isDeleteMovieActive, setIsDeleteMovieActive] = useState(false);
   const [movieId, setMovieId] = useState(null);
+
+  useEffect(() => {
+    if (genre === movieFilters[0]) {
+      setSortedFilms(films);
+    } else {
+      const movies = films.filter(film => {
+        return film.genre === genre
+      });
+      setSortedFilms(movies);
+    }
+  }, [genre])
 
   const onAddMovieClick = () => {
     setIsAddMovieActive((isAddMovieActive) => !isAddMovieActive);
@@ -59,23 +74,25 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.movies__block}>
-        <Filters />
+        <Filters setGenre={setGenre} genre={genre} />
         <div className={styles.movies__text}>
           <span className={styles.movies__count}>{moviesCount}</span>
           <span>movies found</span>
         </div>
         <div className={styles.movies__found}>
-           {films.map(film => {
-             return (
-              <Movie
-                film={film}
-                key={film.id}
-                setFilmId={setFilmId}
-                onEditMovieClick={onEditMovieClick}
-                onDeleteMovieClick={onDeleteMovieClick}
-            />
-             )
-           })}
+          {!isNil(sortedFilms) && (sortedFilms.map(film => {
+                return (
+                  <Movie
+                    film={film}
+                    key={film.id}
+                    setFilmId={setFilmId}
+                    onEditMovieClick={onEditMovieClick}
+                    onDeleteMovieClick={onDeleteMovieClick}
+                  />
+                )
+              })
+            )
+          }
         </div>
       </div>
       <Footer />

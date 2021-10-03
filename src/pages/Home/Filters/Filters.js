@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Select } from '../../../components'
 import { movieFilters, sortMovies } from '../../../components/constants'
 import cn from 'classnames'
 import styles from './Filters.module.css'
 
-const Filters = () => {
-  const [checkedTab, setCheckedTab] = useState(movieFilters[0]);
+const Filters = ({ setGenre, genre }) => {
 
     return (
       <>
@@ -14,9 +14,9 @@ const Filters = () => {
             {movieFilters.map(value => {
               return (
                 <div
-                  className={cn(styles.filters__item, {[ styles.filters__checked ]: checkedTab === value})}
+                  className={cn(styles.filters__item, {[ styles.filters__checked ]: genre === value})}
                   key={value}
-                  onClick={() => setCheckedTab(value)}
+                  onClick={() => setGenre(value)}
                 >
                   {value}
                 </div>
@@ -38,5 +38,10 @@ const Filters = () => {
       </>
     );
 }
+
+Filters.propTypes = {
+  genre: PropTypes.string,
+  setGenre: PropTypes.func,
+};
 
 export { Filters }

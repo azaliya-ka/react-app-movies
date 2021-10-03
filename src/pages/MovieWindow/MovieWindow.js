@@ -80,6 +80,7 @@ const MovieWindow = ({ onClick, title, movieId }) => {
 }
 
 MovieWindow.propTypes = {
+  title: PropTypes.string,
   onClick: PropTypes.func,
   movieId: PropTypes.oneOfType([
     PropTypes.string,
