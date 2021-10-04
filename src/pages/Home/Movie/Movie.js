@@ -42,11 +42,25 @@ Movie.propTypes = {
       PropTypes.number
     ]),
     description: PropTypes.string,
-    onMovieClick: PropTypes.func
+    movieUrl: PropTypes.string,
+    rating: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    runtime: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    overview: PropTypes.string,
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    genre: PropTypes.string,
   }),
   onEditMovieClick: PropTypes.func,
   onDeleteMovieClick: PropTypes.func,
-  setFilmId: PropTypes.func,
+  setFilmId: PropTypes.func
 }
 
 export { Movie }

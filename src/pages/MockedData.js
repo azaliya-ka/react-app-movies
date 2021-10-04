@@ -12,7 +12,11 @@ export const films = [
         year: '2004',
         picture: PulpFiction,
         id: 1,
-        genre: 'crime'
+        genre: 'crime',
+        movieUrl: 'https://url',
+        rating: '7.8',
+        runtime: '1h 47min',
+        overview: 'This is meaningful overview'
     },
     {
         name: 'Bohemian Rhapsody',
@@ -20,7 +24,11 @@ export const films = [
         year: '2003',
         picture: BohemianRhapsody,
         id: 2,
-        genre: 'comedy'
+        genre: 'comedy',
+        movieUrl: 'https://url',
+        rating: '8.1',
+        runtime: '2h 10min',
+        overview: 'This is meaningful overview'
     },
     {
         name: 'Kill Bill: Vol 2',
@@ -28,7 +36,11 @@ export const films = [
         year: '1994',
         picture: KillBill,
         id: 3,
-        genre: 'crime'
+        genre: 'crime',
+        movieUrl: 'https://url',
+        rating: '8.0',
+        runtime: '1h 55min',
+        overview: 'This is meaningful overview'
     },
     {
         name: 'Avengers: War of Infinity',
@@ -36,7 +48,11 @@ export const films = [
         year: '2004',
         picture: Avengers,
         id: 4,
-        genre: 'horror'
+        genre: 'horror',
+        movieUrl: 'https://url',
+        rating: '6.3',
+        runtime: '2h 34min',
+        overview: 'This is meaningful overview'
     },
     {
         name: 'Inception',
@@ -44,7 +60,11 @@ export const films = [
         year: '2003',
         picture: Inception,
         id: 5,
-        genre: 'documentary'
+        genre: 'documentary',
+        movieUrl: 'https://url',
+        rating: '6.9',
+        runtime: '1h 36min',
+        overview: 'This is meaningful overview'
     },
     {
         name: 'Reservoir dogs',
@@ -52,6 +72,10 @@ export const films = [
         year: '1993',
         picture: ReservoirDogs,
         id: 6,
-        genre: 'documentary'
+        genre: 'documentary',
+        movieUrl: 'https://url',
+        rating: '7.1',
+        runtime: '1h 52min',
+        overview: 'This is meaningful overview'
     }
 ]

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { CloseButton } from './../../../images/icons';
 import { Button } from './../../../components/Button/Button';
 import styles from './DeleteMovie.module.css';
@@ -19,5 +20,9 @@ const DeleteMovie = ({ onClick }) => {
       </div>
     );
 }
+
+DeleteMovie.propTypes = {
+  onClick: PropTypes.func
+};
 
 export { DeleteMovie }

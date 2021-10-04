@@ -4,7 +4,15 @@ import PropTypes from "prop-types";
 import { DropdownArrow } from './../../images/icons'
 import styles from './Select.module.css'
   
-const Select = ({ options, label, selectClass, containerClass, arrowClass, labelClass, iconClass }) => {
+const Select = ({
+  options,
+  label,
+  selectClass,
+  containerClass,
+  arrowClass,
+  labelClass,
+  iconClass
+}) => {
   return (
     <div className={cn(styles.container, containerClass)}>
         {label && <div className={cn(styles.label, labelClass)}>{label}</div>}
@@ -26,7 +34,8 @@ Select.propTypes = {
   selectClass: PropTypes.string,
   containerClass: PropTypes.string,
   arrowClass: PropTypes.string,
-  labelClass: PropTypes.string
+  labelClass: PropTypes.string,
+  iconClass: PropTypes.string
 };
   
 export { Select };

@@ -45,12 +45,14 @@ const MovieWindow = ({ onClick, title, movieId }) => {
             label='movie url'
             containerClass={styles.input__container}
             placeholder={!isNil(movie) ? '' : 'https://'}
+            value={!isNil(movie) ? movie.movieUrl : ''}
           />
           <InputText
             label='rating'
             inputClass={styles.rightInputs}
             containerClass={styles.input__container}
             placeholder={!isNil(movie) ? '' : '7.8'}
+            value={!isNil(movie) ? movie.rating : ''}
           />
           <Select
             label='genre'
@@ -64,12 +66,14 @@ const MovieWindow = ({ onClick, title, movieId }) => {
             inputClass={styles.rightInputs}
             containerClass={styles.input__container}
             placeholder={!isNil(movie) ? '' : 'minutes'}
+            value={!isNil(movie) ? movie.runtime : ''}
           />
         </div>
         <TextArea
           label='overview'
           containerClass={styles.input__container}
           placeholder={!isNil(movie) ? '' : 'Movie description'}
+          value={!isNil(movie) ? movie.overview : ''}
         />
         <div className={styles.buttons}>
           <Button value='reset'  buttonClass={styles.reset}/>
