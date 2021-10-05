@@ -12,35 +12,26 @@ import { films } from '../MockedData';
 import styles from './Home.module.css';
 
 const Home = () => {
-  const [sortedFilms, setSortedFilms] = useState(null);
   const [genre, setGenre] = useState(movieFilters[0]);
   const [moviesCount, setMoviesCount] = useState(0);
-  const [isAddMovieActive, setIsAddMovieActive] = useState(false);
-  const [isEditMovieActive, setIsEditMovieActive] = useState(false);
-  const [isDeleteMovieActive, setIsDeleteMovieActive] = useState(false);
+  const [windowType, setWindowType] = useState(null);
   const [movieId, setMovieId] = useState(null);
-
-  useEffect(() => {
-    if (genre === movieFilters[0]) {
-      setSortedFilms(films);
-    } else {
-      const movies = films.filter(film => {
-        return film.genre === genre
-      });
-      setSortedFilms(movies);
-    }
-  }, [genre])
+  const sortedFilms = genre === movieFilters[0] ? films : films.filter(film => film.genre === genre);
 
   const onAddMovieClick = () => {
-    setIsAddMovieActive((isAddMovieActive) => !isAddMovieActive);
+    setWindowType('add');
   }
 
   const onEditMovieClick = () => {
-    setIsEditMovieActive((isEditMovieActive) => !isEditMovieActive);
+    setWindowType('edit');
   }
 
   const onDeleteMovieClick = () => {
-    setIsDeleteMovieActive((isDeleteMovieActive) => !isDeleteMovieActive);
+    setWindowType('delete');
+  }
+
+  const closeWindow = () => {
+    setWindowType(null);
   }
 
   const setFilmId = id => {
@@ -49,15 +40,15 @@ const Home = () => {
 
   return (
     <div className={styles.home__background}>
-      {isAddMovieActive && <MovieWindow onClick={onAddMovieClick} title='add movie' />}
-      {isEditMovieActive && (
+      {windowType === 'add' && <MovieWindow closeWindow={closeWindow} title='add movie' />}
+      {windowType === 'edit' && (
         <MovieWindow
-          onClick={onEditMovieClick}
+          closeWindow={closeWindow}
           title='edit movie'
           movieId={movieId}
         />
       )}
-      {isDeleteMovieActive && <DeleteMovie onClick={onDeleteMovieClick} />}
+      {windowType === 'delete' && <DeleteMovie closeWindow={closeWindow} />}
       <div className={styles.search__block}>
         <div className={styles.search__addMovieLine}>
           <Icon />

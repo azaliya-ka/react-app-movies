@@ -34,22 +34,16 @@
     text-transform: uppercase;
 }
 
-:global(.react-datepicker) {
-    background-color: rgba(50, 50, 50, 0.95);
-}
-
+:global(.react-datepicker),
 :global(.react-datepicker__header) {
     background-color: rgba(50, 50, 50, 0.95);
-}
-
-:global(.react-datepicker__day) {
-    color: rgba(255, 255, 255, 0.3);
 }
 
 :global(.react-datepicker__day:hover) {
     background-color: #232323;
 }
 
+:global(.react-datepicker__day),
 :global(.react-datepicker__day-name) {
     color: rgba(255, 255, 255, 0.3);
 }

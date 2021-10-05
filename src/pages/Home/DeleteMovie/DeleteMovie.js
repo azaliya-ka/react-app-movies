@@ -4,11 +4,11 @@ import { CloseButton } from './../../../images/icons';
 import { Button } from './../../../components/Button/Button';
 import styles from './DeleteMovie.module.css';
 
-const DeleteMovie = ({ onClick }) => {
+const DeleteMovie = ({ closeWindow }) => {
     return (
       <div className={styles.background}>
         <div className={styles.container}>
-            <span className={styles.close} onClick={onClick}>
+            <span className={styles.close} onClick={closeWindow}>
                 <CloseButton className={styles.close__icon}/>
             </span>
             <div className={styles.title}>delete movie</div>
@@ -22,7 +22,7 @@ const DeleteMovie = ({ onClick }) => {
 }
 
 DeleteMovie.propTypes = {
-  onClick: PropTypes.func
+  closeWindow: PropTypes.func
 };
 
 export { DeleteMovie }

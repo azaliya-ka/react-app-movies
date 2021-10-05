@@ -7,22 +7,15 @@ import { genre } from '../../components/constants';
 import { films } from './../MockedData';
 import styles from './MovieWindow.module.css';
   
-const MovieWindow = ({ onClick, title, movieId }) => {
-  const [movie, setMovie] = useState(null);
-
-  useEffect(() => {
-    const arr = films.filter((film => {
-      return film.id === movieId;
-    }))
-    setMovie(arr[0]);
-  }, [movieId])
+const MovieWindow = ({ closeWindow, title, movieId }) => {
+  const movie = films.find(film => film.id === movieId);
 
   return (
     <div className={styles.background}>
       <div className={styles.container}>
         <div
           onClick={() => {
-            onClick();
+            closeWindow();
             setMovie(null);
           }}
           className={styles.close}
@@ -34,8 +27,8 @@ const MovieWindow = ({ onClick, title, movieId }) => {
           <InputText
             label='title'
             containerClass={styles.input__container}
-            placeholder={!isNil(movie) ? '' : 'Moana'}
-            value={!isNil(movie) ? movie.name : ''}
+            placeholder='Moana'
+            value={movie?.name || ''}
           />
           <DateInput
             label='release date'
@@ -44,15 +37,15 @@ const MovieWindow = ({ onClick, title, movieId }) => {
           <InputText
             label='movie url'
             containerClass={styles.input__container}
-            placeholder={!isNil(movie) ? '' : 'https://'}
-            value={!isNil(movie) ? movie.movieUrl : ''}
+            placeholder='https://'
+            value={movie?.movieUrl || ''}
           />
           <InputText
             label='rating'
             inputClass={styles.rightInputs}
             containerClass={styles.input__container}
-            placeholder={!isNil(movie) ? '' : '7.8'}
-            value={!isNil(movie) ? movie.rating : ''}
+            placeholder='7.8'
+            value={movie?.rating || ''}
           />
           <Select
             label='genre'
@@ -65,15 +58,15 @@ const MovieWindow = ({ onClick, title, movieId }) => {
             label='runtime'
             inputClass={styles.rightInputs}
             containerClass={styles.input__container}
-            placeholder={!isNil(movie) ? '' : 'minutes'}
-            value={!isNil(movie) ? movie.runtime : ''}
+            placeholder='minutes'
+            value={movie?.runtime || ''}
           />
         </div>
         <TextArea
           label='overview'
           containerClass={styles.input__container}
-          placeholder={!isNil(movie) ? '' : 'Movie description'}
-          value={!isNil(movie) ? movie.overview : ''}
+          placeholder='Movie description'
+          value={movie?.overview || ''}
         />
         <div className={styles.buttons}>
           <Button value='reset'  buttonClass={styles.reset}/>
@@ -86,7 +79,7 @@ const MovieWindow = ({ onClick, title, movieId }) => {
 
 MovieWindow.propTypes = {
   title: PropTypes.string,
-  onClick: PropTypes.func,
+  closeWindow: PropTypes.func,
   movieId: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number
