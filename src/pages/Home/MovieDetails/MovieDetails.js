@@ -1,5 +1,4 @@
 import React from 'react';
-import cn from 'classnames';
 import PropTypes from "prop-types";
 import { SearchButton } from './../../../images/icons';
 import { Icon } from './../../../components/Icon/Icon';
@@ -17,7 +16,21 @@ const MovieDetails = ({ onSearchClick, movieId }) => {
                 <SearchButton />
             </span>
           </div>
-          <h1>{movie.name}</h1>
+          <div className={styles.details}>
+            <img src={movie.picture} className={styles.image} />
+            <div className={styles.text}>
+                <div className={styles.nameBlock}>
+                    <span className={styles.name}>{movie.name}</span>
+                    <div className={styles.rating}>{movie.rating}</div>
+                </div>
+                <div className={styles.description}>Action & Adventure</div>
+                <div>
+                    <span className={styles.year}>{movie.year}</span>
+                    <span className={styles.runtime}>{movie.runtime}</span>
+                </div>
+                <div className={styles.overview}>{movie.overview}</div>
+            </div>
+          </div>
       </>
   );
 }
