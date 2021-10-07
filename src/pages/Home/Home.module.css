@@ -16,6 +16,15 @@
     background-image: url("./../../images/home_background.svg");
 }
 
+.details__block {
+    box-sizing: border-box;
+    background-color: #232323;
+    padding: 20px 56px 0 60px;
+    width: 1200px;
+    height: 396px;
+    margin-bottom: 10px;
+}
+
 .search__addMovieLine {
     display: flex;
     justify-content: space-between;
