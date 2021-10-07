@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
-import styles from './Movie.css'
+import { ContextMenu } from './../../../images/icons';
+import { ContextWindow } from './ContextWindow/ContextWindow';
+import styles from './Movie.module.css'
 
-const Movie = ({ film }) => {
+const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId }) => {
+    const [windowOpened, setWindowOpened] = useState(false);
+
     return (
-      <div>
+      <div className={styles.container}>
+        <ContextWindow
+          windowOpened={windowOpened}
+          setWindowOpened={setWindowOpened}
+          onEditMovieClick={onEditMovieClick}
+          onDeleteMovieClick={onDeleteMovieClick}
+          setFilmId={setFilmId}
+          id={film.id}
+        />
+        <span
+          className={styles.icon}
+          onClick={() => setWindowOpened(true)}
+        >
+          <ContextMenu />
+        </span>
         <img src={film.picture} className={styles.movie} />
         <div className={styles.movies__name}>
           <span>{film.name}</span>
@@ -23,8 +41,26 @@ Movie.propTypes = {
       PropTypes.string,
       PropTypes.number
     ]),
-    description: PropTypes.string
-  })
+    description: PropTypes.string,
+    movieUrl: PropTypes.string,
+    rating: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    runtime: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    overview: PropTypes.string,
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]),
+    genre: PropTypes.string,
+  }),
+  onEditMovieClick: PropTypes.func,
+  onDeleteMovieClick: PropTypes.func,
+  setFilmId: PropTypes.func
 }
 
 export { Movie }

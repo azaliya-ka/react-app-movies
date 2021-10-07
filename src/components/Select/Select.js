@@ -1,25 +1,41 @@
 import React from 'react';
-import cn from 'classnames'
+import cn from 'classnames';
 import PropTypes from "prop-types";
-import styles from './Select.css'
+import { DropdownArrow } from './../../images/icons'
+import styles from './Select.module.css'
   
-const Select = ({ options, selectClass }) => {
+const Select = ({
+  options,
+  label,
+  selectClass,
+  containerClass,
+  arrowClass,
+  labelClass,
+  iconClass
+}) => {
   return (
-    <div className={styles.container}>
-      <select
-        className={cn(selectClass, styles.select)}
-      >
-        {options.map(value => {
-            return <option key={value}>{value}</option>
-        })}
-      </select>
+    <div className={cn(styles.container, containerClass)}>
+        {label && <div className={cn(styles.label, labelClass)}>{label}</div>}
+        <select
+          className={cn(selectClass, styles.select)}
+        >
+          {options.map(value => {
+              return <option key={value}>{value}</option>
+          })}
+        </select>
+      <span className={cn(styles.arrow, arrowClass)}><DropdownArrow className={iconClass} /></span>
     </div>
   );
 }
 
 Select.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string),
+  label: PropTypes.string,
   selectClass: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.string)
+  containerClass: PropTypes.string,
+  arrowClass: PropTypes.string,
+  labelClass: PropTypes.string,
+  iconClass: PropTypes.string
 };
   
 export { Select };
