@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { Context } from './../../components/App';
 import { Button, InputText } from '../../components';
 import { Movie } from './Movie/Movie';
 import { Filters } from './Filters/Filters';
@@ -9,10 +10,10 @@ import { DeleteMovie } from './DeleteMovie/DeleteMovie';
 import { MovieDetails } from './MovieDetails/MovieDetails';
 import { Footer } from '../../components';
 import { Icon } from '../../components';
-import { films } from '../MockedData';
 import styles from './Home.module.css';
 
 const Home = () => {
+  const films = useContext(Context);
   const [genre, setGenre] = useState(movieFilters[0]);
   const [moviesCount, setMoviesCount] = useState(0);
   const [windowType, setWindowType] = useState(null);

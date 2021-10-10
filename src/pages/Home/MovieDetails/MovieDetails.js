@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from "prop-types";
+import { Context } from './../../../components/App';
 import { SearchButton } from './../../../images/icons';
 import { Icon } from './../../../components/Icon/Icon';
-import { films } from './../../MockedData';
 import styles from './MovieDetails.module.css';
   
 const MovieDetails = ({ onSearchClick, movieId }) => {
+  const films = useContext(Context);
   const movie = films.find(film => film.id === movieId);
 
   return (

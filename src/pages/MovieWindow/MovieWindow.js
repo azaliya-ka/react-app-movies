@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Context } from './../../components/App';
 import { InputText, TextArea, Button, Select, DateInput } from '../../components'
 import { CloseButton } from '../../images/icons';
 import { genre } from '../../components/constants';
-import { films } from './../MockedData';
 import styles from './MovieWindow.module.css';
   
 const MovieWindow = ({ closeWindow, title, movieId }) => {
+  const films = useContext(Context);
   const movie = films.find(film => film.id === movieId);
 
   return (
