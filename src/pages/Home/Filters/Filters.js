@@ -5,7 +5,7 @@ import { movieFilters, sortMovies } from '../../../components/constants'
 import cn from 'classnames'
 import styles from './Filters.module.css'
 
-const Filters = ({ setGenre, genre }) => {
+const Filters = ({ setGenre, genre, onSelectChange }) => {
 
     return (
       <>
@@ -31,6 +31,7 @@ const Filters = ({ setGenre, genre }) => {
               containerClass={styles.filters__selectContainer}
               arrowClass={styles.filters__selectArrow}
               iconClass={styles.icon}
+              onChange={onSelectChange}
             />
           </div>
         </div>
@@ -42,6 +43,7 @@ const Filters = ({ setGenre, genre }) => {
 Filters.propTypes = {
   genre: PropTypes.string,
   setGenre: PropTypes.func,
+  onSelectChange: PropTypes.func
 };
 
 export { Filters }

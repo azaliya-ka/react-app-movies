@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, InputText } from '../../components';
 import { Movie } from './Movie/Movie';
 import { Filters } from './Filters/Filters';
 import { isNil } from 'ramda';
-import { movieFilters } from './../../components/constants';
+import { movieFilters, sortMovies } from './../../components/constants';
 import { MovieWindow } from './../MovieWindow/MovieWindow';
 import { DeleteMovie } from './DeleteMovie/DeleteMovie';
 import { MovieDetails } from './MovieDetails/MovieDetails';
@@ -19,7 +19,33 @@ const Home = () => {
   const [areDetailsActive, setAreDetailsActive] = useState(false);
   const [movieId, setMovieId] = useState(null);
   const [movieDetailsId, setMovieDetailsId] = useState(null);
-  const sortedFilms = genre === movieFilters[0] ? films : films.filter(film => film.genre === genre);
+  const [sortingOption, setSortingOption] = useState(sortMovies[0]);
+  const [sortedFilms, setSortedFilms] = useState(null);
+
+  useEffect(() => {
+    const movies = genre === movieFilters[0] ? films : films.filter(film => film.genre === genre);
+    setSortedFilms(movies);
+  }, [genre]);
+  
+  useEffect(() => {
+    const compareYears = (a, b) => {
+      return a.year - b.year;
+    }
+    const compareRating = (a, b) => {
+      return a.rating - b.rating;
+    }
+    if (sortingOption === sortMovies[0]) {
+      const movies = films.sort(compareYears);
+      setSortedFilms([...movies]);
+    } else if (sortingOption === sortMovies[1]) {
+      const movies = films.sort(compareRating).reverse();
+      setSortedFilms([...movies]);
+    }
+  }, [sortingOption]);
+  
+  const onSelectChange = e => {
+    setSortingOption(e.target.value);
+  }
 
   const onAddMovieClick = () => {
     setWindowType('add');
@@ -85,7 +111,7 @@ const Home = () => {
         </div>
       )}
       <div className={styles.movies__block}>
-        <Filters setGenre={setGenre} genre={genre} />
+        <Filters setGenre={setGenre} genre={genre} onSelectChange={onSelectChange} />
         <div className={styles.movies__text}>
           <span className={styles.movies__count}>{moviesCount}</span>
           <span>movies found</span>

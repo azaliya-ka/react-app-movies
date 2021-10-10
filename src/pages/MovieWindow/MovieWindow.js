@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { isNil } from 'ramda';
 import { InputText, TextArea, Button, Select, DateInput } from '../../components'
 import { CloseButton } from '../../images/icons';
 import { genre } from '../../components/constants';

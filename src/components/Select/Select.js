@@ -11,13 +11,15 @@ const Select = ({
   containerClass,
   arrowClass,
   labelClass,
-  iconClass
+  iconClass,
+  onChange
 }) => {
   return (
     <div className={cn(styles.container, containerClass)}>
         {label && <div className={cn(styles.label, labelClass)}>{label}</div>}
         <select
           className={cn(selectClass, styles.select)}
+          onChange={onChange}
         >
           {options.map(value => {
               return <option key={value}>{value}</option>
@@ -35,7 +37,8 @@ Select.propTypes = {
   containerClass: PropTypes.string,
   arrowClass: PropTypes.string,
   labelClass: PropTypes.string,
-  iconClass: PropTypes.string
+  iconClass: PropTypes.string,
+  onChange: PropTypes.func
 };
   
 export { Select };
