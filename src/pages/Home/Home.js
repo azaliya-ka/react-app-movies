@@ -24,6 +24,12 @@ const Home = () => {
   const [sortedFilms, setSortedFilms] = useState(null);
 
   useEffect(() => {
+    if (!isNil(sortedFilms)) {
+      setMoviesCount(sortedFilms.length);
+    }
+  }, [sortedFilms]);
+
+  useEffect(() => {
     const movies = genre === movieFilters[0] ? films : films.filter(film => film.genre === genre);
     setSortedFilms(movies);
   }, [genre]);
