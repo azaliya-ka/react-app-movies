@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
+import { useToggle } from './../../../components/hooks';
 import { ContextMenu } from './../../../images/icons';
 import { ContextWindow } from './ContextWindow/ContextWindow';
 import styles from './Movie.module.css'
 
 const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId, onCardClick }) => {
-    const [windowOpened, setWindowOpened] = useState(false);
+    const [windowOpened, setWindowOpened] = useToggle();
 
     return (
       <div className={styles.container}>
@@ -19,7 +20,7 @@ const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId, onCardCl
         />
         <span
           className={styles.icon}
-          onClick={() => setWindowOpened(true)}
+          onClick={setWindowOpened}
         >
           <ContextMenu />
         </span>

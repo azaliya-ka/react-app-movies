@@ -5,7 +5,7 @@ import Avengers from './../images/4.png';
 import Inception from './../images/5.png';
 import ReservoirDogs from './../images/6.png';
 
-export const films = [
+export const movies = [
     {
         name: 'Pulp Fiction',
         description: 'Action & Adventure',

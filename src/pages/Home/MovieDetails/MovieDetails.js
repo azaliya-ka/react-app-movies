@@ -6,8 +6,8 @@ import { Icon } from './../../../components/Icon/Icon';
 import styles from './MovieDetails.module.css';
   
 const MovieDetails = ({ onSearchClick, movieId }) => {
-  const films = useContext(Context);
-  const movie = films.find(film => film.id === movieId);
+  const movies = useContext(Context);
+  const movie = movies.find(film => film.id === movieId);
 
   return (
       <>

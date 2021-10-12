@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useMemo } from 'react';
 import { Context } from './../../components/App';
 import { Button, InputText } from '../../components';
 import { Movie } from './Movie/Movie';
@@ -13,25 +13,22 @@ import { Icon } from '../../components';
 import styles from './Home.module.css';
 
 const Home = () => {
-  const films = useContext(Context);
+  const movies = useContext(Context);
   const [genre, setGenre] = useState(movieFilters[0]);
-  const [moviesCount, setMoviesCount] = useState(0);
   const [windowType, setWindowType] = useState(null);
-  const [areDetailsActive, setAreDetailsActive] = useState(false);
   const [movieId, setMovieId] = useState(null);
   const [movieDetailsId, setMovieDetailsId] = useState(null);
   const [sortingOption, setSortingOption] = useState(sortMovies[0]);
-  const [sortedFilms, setSortedFilms] = useState(null);
-
-  useEffect(() => {
-    if (!isNil(sortedFilms)) {
-      setMoviesCount(sortedFilms.length);
+  const [sortedMovies, setSortedMovies] = useState(null);
+  const moviesCount = useMemo(() => {
+    if (!isNil(sortedMovies)) {
+        return sortedMovies.length;
     }
-  }, [sortedFilms]);
+  }, [sortedMovies]);
 
   useEffect(() => {
-    const movies = genre === movieFilters[0] ? films : films.filter(film => film.genre === genre);
-    setSortedFilms(movies);
+    const films = genre === movieFilters[0] ? movies : movies.filter(film => film.genre === genre);
+    setSortedMovies(films);
   }, [genre]);
   
   useEffect(() => {
@@ -41,13 +38,13 @@ const Home = () => {
     const compareRating = (a, b) => {
       return a.rating - b.rating;
     }
+    let films = sortedMovies;
     if (sortingOption === sortMovies[0]) {
-      const movies = films.sort(compareYears);
-      setSortedFilms([...movies]);
+      films = movies.sort(compareYears);
     } else if (sortingOption === sortMovies[1]) {
-      const movies = films.sort(compareRating).reverse();
-      setSortedFilms([...movies]);
+      films = movies.sort(compareRating).reverse();
     }
+    setSortedMovies([...films]);
   }, [sortingOption]);
   
   const onSelectChange = e => {
@@ -75,12 +72,10 @@ const Home = () => {
   }
 
   const onCardClick = (id) => {
-    setAreDetailsActive(true);
     setMovieDetailsId(id);
   }
 
   const onSearchClick = () => {
-    setAreDetailsActive(false);
     setMovieDetailsId(null);
   }
 
@@ -95,7 +90,12 @@ const Home = () => {
         />
       )}
       {windowType === 'delete' && <DeleteMovie closeWindow={closeWindow} />}
-      {!areDetailsActive && (
+      {movieDetailsId ? (
+        <div className={styles.details__block}>
+          <MovieDetails onSearchClick={onSearchClick} movieId={movieDetailsId} />
+        </div>
+      ) :
+      (
         <div className={styles.search__block}>
           <div className={styles.search__addMovieLine}>
             <Icon />
@@ -112,11 +112,6 @@ const Home = () => {
           </div>
         </div>
       )}
-      {areDetailsActive && (
-        <div className={styles.details__block}>
-          <MovieDetails onSearchClick={onSearchClick} movieId={movieDetailsId} />
-        </div>
-      )}
       <div className={styles.movies__block}>
         <Filters setGenre={setGenre} genre={genre} onSelectChange={onSelectChange} />
         <div className={styles.movies__text}>
@@ -124,7 +119,7 @@ const Home = () => {
           <span>movies found</span>
         </div>
         <div className={styles.movies__found}>
-          {!isNil(sortedFilms) && (sortedFilms.map(film => {
+          {!isNil(sortedMovies) && (sortedMovies.map(film => {
                 return (
                   <Movie
                     film={film}

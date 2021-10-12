@@ -7,8 +7,8 @@ import { genre } from '../../components/constants';
 import styles from './MovieWindow.module.css';
   
 const MovieWindow = ({ closeWindow, title, movieId }) => {
-  const films = useContext(Context);
-  const movie = films.find(film => film.id === movieId);
+  const movies = useContext(Context);
+  const movie = movies.find(film => film.id === movieId);
 
   return (
     <div className={styles.background}>
