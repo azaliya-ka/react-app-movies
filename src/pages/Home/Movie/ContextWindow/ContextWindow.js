@@ -15,13 +15,13 @@ const ContextWindow = ({
 
     const onEditClick = () => {
         onEditMovieClick();
-        setWindowOpened(false)
+        setWindowOpened()
         setFilmId(id);
     }
 
     const onDeleteClick = () => {
         onDeleteMovieClick();
-        setWindowOpened(false)
+        setWindowOpened()
         setFilmId(id);
     }
 
@@ -29,7 +29,7 @@ const ContextWindow = ({
         <div
             className={cn(styles.context__window, { [styles.context__windowOpened]: windowOpened })}
         >
-            <span className={styles.close} onClick={() => setWindowOpened(false)}>
+            <span className={styles.close} onClick={setWindowOpened}>
                 <CloseButton className={styles.close__icon}/>
             </span>
             <div className={styles.window__buttons} onClick={onEditClick}>Edit</div>

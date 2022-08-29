@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from "prop-types";
+import { useToggle } from './../../../components/hooks';
 import { ContextMenu } from './../../../images/icons';
 import { ContextWindow } from './ContextWindow/ContextWindow';
 import styles from './Movie.module.css'
 
-const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId }) => {
-    const [windowOpened, setWindowOpened] = useState(false);
+const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId, onCardClick }) => {
+    const [windowOpened, setWindowOpened] = useToggle();
 
     return (
       <div className={styles.container}>
@@ -19,11 +20,11 @@ const Movie = ({ film, onEditMovieClick, onDeleteMovieClick, setFilmId }) => {
         />
         <span
           className={styles.icon}
-          onClick={() => setWindowOpened(true)}
+          onClick={setWindowOpened}
         >
           <ContextMenu />
         </span>
-        <img src={film.picture} className={styles.movie} />
+        <img src={film.picture} className={styles.movie} onClick={() => onCardClick(film.id)} />
         <div className={styles.movies__name}>
           <span>{film.name}</span>
           <div className={styles.movies__year}>{film.year}</div>
@@ -60,7 +61,8 @@ Movie.propTypes = {
   }),
   onEditMovieClick: PropTypes.func,
   onDeleteMovieClick: PropTypes.func,
-  setFilmId: PropTypes.func
+  setFilmId: PropTypes.func,
+  onCardClick: PropTypes.func
 }
 
 export { Movie }

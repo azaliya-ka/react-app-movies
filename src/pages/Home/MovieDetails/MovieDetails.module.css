@@ -1,0 +1,71 @@
+.icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.searchIcon {
+    cursor: pointer;
+}
+
+.details {
+    display: flex;
+}
+
+.text {
+    margin-left: 53px;
+}
+
+.image {
+    height: 486px;
+}
+
+.nameBlock {
+    display: flex;
+    align-items: center;
+}
+
+.name {
+    font-weight: 300;
+    font-size: 40px;
+}
+
+.rating {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.description {
+    font-weight: 500;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 8px;
+}
+
+.runtime, .year {
+    color: #F65261;
+    font-weight: 300;
+    font-size: 24px;
+    padding-top: 30px;
+}
+
+.runtime {
+    display: inline-block;
+    padding-left: 51px;
+}
+
+.overview {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 0.5);
+    padding-top: 30px;
+}
