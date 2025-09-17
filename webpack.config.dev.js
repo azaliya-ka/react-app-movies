@@ -56,7 +56,7 @@ module.exports = {
    watch: true,
    devtool: 'source-map',
    devServer: {
-      contentBase: path.join(__dirname, 'dev'),
+      static: path.resolve(__dirname, 'dist'),
       compress: true,
       port: 3000,
       open: true
