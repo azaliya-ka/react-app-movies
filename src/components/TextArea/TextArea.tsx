@@ -1,9 +1,16 @@
 import React from 'react';
-import cn from 'classnames'
-import PropTypes from "prop-types";
+import cn from 'classnames';
 import styles from './TextArea.module.css';
+
+interface TextAreaTypes {
+    placeholder?: string,
+    inputClass?: string,
+    containerClass?: string,
+    label?: string,
+    value: string
+}
   
-const TextArea = ({ placeholder, inputClass, label, containerClass, value }) => {
+const TextArea = ({ placeholder, inputClass, label, containerClass, value } : TextAreaTypes) => {
   return (
     <div className={containerClass}>
       {label && <div className={styles.label}>{label}</div>}
@@ -15,13 +22,5 @@ const TextArea = ({ placeholder, inputClass, label, containerClass, value }) => 
     </div>
   );
 }
-
-TextArea.propTypes = {
-  placeholder: PropTypes.string,
-  inputClass: PropTypes.string,
-  containerClass: PropTypes.string,
-  label: PropTypes.string,
-  value: PropTypes.string
-};
   
 export { TextArea };

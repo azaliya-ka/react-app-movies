@@ -1,14 +1,20 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { Context } from './../../components/App';
+import { Context } from '../../components/App';
 import { InputText, TextArea, Button, Select, DateInput } from '../../components'
 import { CloseButton } from '../../images/icons';
 import { genre } from '../../components/constants';
+import type { Film } from '../../types/types'
 import styles from './MovieWindow.module.css';
+
+interface MovieWindowTypes {
+  title: string,
+  closeWindow: () => void,
+  movieId?: string | number
+}
   
-const MovieWindow = ({ closeWindow, title, movieId }) => {
-  const movies = useContext(Context);
-  const movie = movies.find(film => film.id === movieId);
+const MovieWindow = ({ closeWindow, title, movieId } : MovieWindowTypes) => {
+  const movies: Film[] = useContext(Context);
+  const movie = movies.find((film: Film) => film.id === movieId);
 
   return (
     <div className={styles.background}>
@@ -16,7 +22,6 @@ const MovieWindow = ({ closeWindow, title, movieId }) => {
         <div
           onClick={() => {
             closeWindow();
-            setMovie(null);
           }}
           className={styles.close}
         >
@@ -53,6 +58,7 @@ const MovieWindow = ({ closeWindow, title, movieId }) => {
             containerClass={styles.select__container}
             selectClass={styles.select}
             arrowClass={styles.select__arrow}
+            onChange={() => {}}
           />
           <InputText
             label='runtime'
@@ -69,21 +75,12 @@ const MovieWindow = ({ closeWindow, title, movieId }) => {
           value={movie?.overview || ''}
         />
         <div className={styles.buttons}>
-          <Button value='reset'  buttonClass={styles.reset}/>
-          <Button value='submit' buttonClass={styles.submit} />
+          <Button value='reset'  buttonClass={styles.reset} onClick={()=> {}}/>
+          <Button value='submit' buttonClass={styles.submit} onClick={()=> {}} />
         </div>
       </div>
     </div>
   );
 }
-
-MovieWindow.propTypes = {
-  title: PropTypes.string,
-  closeWindow: PropTypes.func,
-  movieId: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ])
-};
   
 export { MovieWindow };

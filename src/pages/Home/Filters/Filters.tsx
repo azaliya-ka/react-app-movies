@@ -1,17 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Select } from '../../../components'
-import { movieFilters, sortMovies } from '../../../components/constants'
-import cn from 'classnames'
-import styles from './Filters.module.css'
+import { Select } from '../../../components';
+import { movieFilters, sortMovies } from '../../../components/constants';
+import cn from 'classnames';
+import styles from './Filters.module.css';
 
-const Filters = ({ setGenre, genre, onSelectChange }) => {
+interface DateInputTypes {
+  genre: string,
+  setGenre: (value: string) => void,
+  onSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+}
+
+const Filters = ({ setGenre, genre, onSelectChange } : DateInputTypes) => {
 
     return (
       <>
         <div className={styles.filters}>
           <div className={styles.filters__tabs}>
-            {movieFilters.map(value => {
+            {movieFilters.map((value: string) => {
               return (
                 <div
                   className={cn(styles.filters__item, {[ styles.filters__checked ]: genre === value})}
@@ -39,11 +44,5 @@ const Filters = ({ setGenre, genre, onSelectChange }) => {
       </>
     );
 }
-
-Filters.propTypes = {
-  genre: PropTypes.string,
-  setGenre: PropTypes.func,
-  onSelectChange: PropTypes.func
-};
 
 export { Filters }

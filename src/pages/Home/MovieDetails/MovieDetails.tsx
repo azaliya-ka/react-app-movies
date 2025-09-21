@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
-import PropTypes from "prop-types";
-import { Context } from './../../../components/App';
-import { SearchButton } from './../../../images/icons';
-import { Icon } from './../../../components/Icon/Icon';
+import { Context } from '../../../components/App';
+import { SearchButton } from '../../../images/icons';
+import { Icon } from '../../../components/Icon/Icon';
 import styles from './MovieDetails.module.css';
+
+interface MovieDetailsTypes {
+    onSearchClick: () => void,
+    movieId: string
+}
   
-const MovieDetails = ({ onSearchClick, movieId }) => {
+const MovieDetails = ({ onSearchClick, movieId }: MovieDetailsTypes) => {
   const movies = useContext(Context);
   const movie = movies.find(film => film.id === movieId);
 
@@ -35,9 +39,5 @@ const MovieDetails = ({ onSearchClick, movieId }) => {
       </>
   );
 }
-
-MovieDetails.propTypes = {
-    onSearchClick: PropTypes.func
-};
   
 export { MovieDetails };

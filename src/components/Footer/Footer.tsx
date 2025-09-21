@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon } from '../../components'
+import { Icon } from '..'
 import styles from './Footer.module.css'
 
 const Footer = () => {

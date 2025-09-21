@@ -1,22 +1,25 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Context } from "./../../components/App";
+import { Context } from "../../components/App";
 import { Button, InputText } from "../../components";
 import { Movie } from "./Movie/Movie";
 import { Filters } from "./Filters/Filters";
 import { isNil } from "ramda";
-import { movieFilters, sortMovies } from "./../../components/constants";
-import { MovieWindow } from "./../MovieWindow/MovieWindow";
+import { movieFilters, sortMovies } from "../../components/constants";
+import { MovieWindow } from "../MovieWindow/MovieWindow";
 import { DeleteMovie } from "./DeleteMovie/DeleteMovie";
 import { MovieDetails } from "./MovieDetails/MovieDetails";
 import { Footer } from "../../components";
 import { Icon } from "../../components";
+import type { Film } from '../../types/types';
 import styles from "./Home.module.css";
 
-const compareYears = (a, b) => {
+const compareYears = (a: {year: number}, b: {year: number}) => {
+  console.log('compareYears', a, b);
   return a.year - b.year;
 };
 
-const compareRating = (a, b) => {
+const compareRating = (a: {rating: number}, b: {rating: number}) => {
+  console.log('compareRating', a, b);
   return a.rating - b.rating;
 };
 
@@ -46,7 +49,7 @@ const Home = () => {
     }
   }, [sortingOption, genre]);
 
-  const onSelectChange = (e) => {
+  const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortingOption(e.target.value);
   };
 
@@ -66,11 +69,11 @@ const Home = () => {
     setWindowType(null);
   };
 
-  const setFilmId = (id) => {
+  const setFilmId = (id: string | number) => {
     setMovieId(id);
   };
 
-  const onCardClick = (id) => {
+  const onCardClick = (id: string | number) => {
     setMovieDetailsId(id);
   };
 
@@ -113,8 +116,9 @@ const Home = () => {
             <InputText
               placeholder="What do you want to watch?"
               inputClass={styles.search__input}
+              value=''
             />
-            <Button value="Search" buttonClass={styles.search__button} />
+            <Button value="Search" buttonClass={styles.search__button} onClick={()=> {}} />
           </div>
         </div>
       )}
@@ -130,7 +134,7 @@ const Home = () => {
         </div>
         <div className={styles.movies__found}>
           {!isNil(sortedMovies) &&
-            sortedMovies.map((film) => {
+            sortedMovies.map((film: Film) => {
               return (
                 <Movie
                   film={film}

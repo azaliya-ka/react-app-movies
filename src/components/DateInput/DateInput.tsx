@@ -1,15 +1,25 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import cn from 'classnames'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { CalendarIcon } from '../../images/icons';
 import styles from './DateInput.module.css';
 
-const DateInput = ({ label, containerClass, labelClass }) => {
+interface DateInputTypes {
+    label: string,
+    containerClass?: string,
+    labelClass?: string,
+}
+
+interface CustomInputTypes {
+    value?: string | number,
+    onClick?: () => void
+}
+
+const DateInput = ({ label, containerClass, labelClass }: DateInputTypes) => {
     const [date, setDate] = useState(new Date());
   
-    const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
+    const CustomInput = React.forwardRef<HTMLButtonElement>(({ value, onClick } : CustomInputTypes, ref) => (
       <button className={styles.input} onClick={onClick} ref={ref}>
         {value}
       </button>
@@ -21,17 +31,11 @@ const DateInput = ({ label, containerClass, labelClass }) => {
         {label && <div className={cn(styles.label, labelClass)}>{label}</div>}
         <DatePicker
           selected={date}
-          onChange={(date) => setDate(date)}
+          onChange={(date: Date | null) => setDate(date)}
           customInput={<CustomInput />}
         />
       </div>
     );
   }
-  
-  DateInput.propTypes = {
-    label: PropTypes.string,
-    containerClass: PropTypes.string,
-    labelClass: PropTypes.string,
-  };
-    
+
   export { DateInput };

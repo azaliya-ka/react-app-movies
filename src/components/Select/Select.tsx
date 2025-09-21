@@ -1,8 +1,18 @@
 import React from 'react';
 import cn from 'classnames';
-import PropTypes from "prop-types";
-import { DropdownArrow } from './../../images/icons'
-import styles from './Select.module.css'
+import { DropdownArrow } from '../../images/icons';
+import styles from './Select.module.css';
+
+interface SelectTypes {
+    options: string[],
+    label?: string,
+    selectClass?: string,
+    containerClass?: string,
+    arrowClass?: string,
+    labelClass?: string,
+    iconClass?: string,
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+}
   
 const Select = ({
   options,
@@ -13,7 +23,7 @@ const Select = ({
   labelClass,
   iconClass,
   onChange
-}) => {
+} : SelectTypes) => {
   return (
     <div className={cn(styles.container, containerClass)}>
         {label && <div className={cn(styles.label, labelClass)}>{label}</div>}
@@ -29,16 +39,5 @@ const Select = ({
     </div>
   );
 }
-
-Select.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.string),
-  label: PropTypes.string,
-  selectClass: PropTypes.string,
-  containerClass: PropTypes.string,
-  arrowClass: PropTypes.string,
-  labelClass: PropTypes.string,
-  iconClass: PropTypes.string,
-  onChange: PropTypes.func
-};
   
 export { Select };

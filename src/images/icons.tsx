@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CloseButton = ({ className }) => {
+const CloseButton = ({ className }: {className?: string}) => {
   return (
     <svg className={className} width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M1.47099 1.15426L21.529 21.2122" stroke="white" strokeWidth="2" strokeLinecap="round"/>
@@ -9,7 +9,7 @@ const CloseButton = ({ className }) => {
   );
 }
 
-const DropdownArrow = ({ className }) => {
+const DropdownArrow = ({ className } : {className?: string}) => {
   return (
     <svg className={className} width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M1.13423 0C0.286533 0 -0.176668 0.988581 0.365828 1.63996L8.22615 11.0779C8.6258 11.5578 9.36265 11.558 9.76259 11.0784L17.6322 1.64041C18.1752 0.989135 17.7121 0 16.8642 0H1.13423Z" fill="#F65261"/>
@@ -31,7 +31,7 @@ const CalendarIcon = () => {
   );
 }
 
-const ContextMenu = ({ className }) => {
+const ContextMenu = ({ className } : {className?: string}) => {
   return (
     <svg className={className} width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d)">
@@ -55,7 +55,7 @@ const ContextMenu = ({ className }) => {
   );
 }
 
-const SearchButton = ({ className }) => {
+const SearchButton = ({ className } : {className?: string}) => {
   return (
     <svg className={className} width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="18.5" cy="10.5" r="9.5" stroke="#F65261" strokeWidth="2"/>

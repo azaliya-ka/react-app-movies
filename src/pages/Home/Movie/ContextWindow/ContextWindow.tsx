@@ -1,8 +1,16 @@
 import React from 'react';
-import PropTypes from "prop-types";
 import cn from 'classnames'
-import { CloseButton } from './../../../../images/icons';
+import { CloseButton } from '../../../../images/icons';
 import styles from './ContextWindow.module.css';
+
+interface ContextWindowTypes {
+    windowOpened: boolean,
+    setWindowOpened: () => void,
+    onEditMovieClick: () => void,
+    onDeleteMovieClick: () => void,
+    setFilmId: (id: string | number) => {},
+    id: string | number,
+}
 
 const ContextWindow = ({
     windowOpened,
@@ -11,7 +19,7 @@ const ContextWindow = ({
     onDeleteMovieClick,
     setFilmId,
     id
-}) => {
+} : ContextWindowTypes) => {
 
     const onEditClick = () => {
         onEditMovieClick();
@@ -37,17 +45,5 @@ const ContextWindow = ({
         </div>
     );
 }
-
-ContextWindow.propTypes = {
-    windowOpened: PropTypes.bool,
-    setWindowOpened: PropTypes.func,
-    onEditMovieClick: PropTypes.func,
-    onDeleteMovieClick: PropTypes.func,
-    setFilmId: PropTypes.func,
-    id: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-    ]),
-  }
   
-  export { ContextWindow }
+export { ContextWindow }
