@@ -17,7 +17,7 @@ interface CustomInputTypes {
 }
 
 const DateInput = ({ label, containerClass, labelClass }: DateInputTypes) => {
-    const [date, setDate] = useState(new Date());
+    const [date, setDate] = useState<Date | null>(new Date());
   
     const CustomInput = React.forwardRef<HTMLButtonElement>(({ value, onClick } : CustomInputTypes, ref) => (
       <button className={styles.input} onClick={onClick} ref={ref}>

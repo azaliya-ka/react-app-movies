@@ -8,7 +8,7 @@ interface ContextWindowTypes {
     setWindowOpened: () => void,
     onEditMovieClick: () => void,
     onDeleteMovieClick: () => void,
-    setFilmId: (id: string | number) => {},
+    setFilmId: (id: string | number) => void,
     id: string | number,
 }
 
