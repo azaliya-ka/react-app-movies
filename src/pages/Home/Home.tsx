@@ -3,7 +3,6 @@ import { Context } from "../../components/App";
 import { Button, InputText } from "../../components";
 import { Movie } from "./Movie/Movie";
 import { Filters } from "./Filters/Filters";
-import { isNil } from "ramda";
 import { movieFilters, sortMovies } from "../../components/constants";
 import { MovieWindow } from "../MovieWindow/MovieWindow";
 import { DeleteMovie } from "./DeleteMovie/DeleteMovie";
@@ -13,24 +12,22 @@ import { Icon } from "../../components";
 import type { Film } from '../../types/types';
 import styles from "./Home.module.css";
 
-const compareYears = (a: {year: number}, b: {year: number}) => {
-  console.log('compareYears', a, b);
-  return a.year - b.year;
+const compareYears = (a: Film, b: Film) => {
+  return Number(a.year) - Number(b.year);
 };
 
-const compareRating = (a: {rating: number}, b: {rating: number}) => {
-  console.log('compareRating', a, b);
-  return a.rating - b.rating;
+const compareRating = (a: Film, b: Film) => {
+  return Number(a.rating) - Number(b.rating);
 };
 
 const Home = () => {
   const movies = useContext(Context);
-  const [sortedMovies, setSortedMovies] = useState(null);
-  const [genre, setGenre] = useState(movieFilters[0]);
-  const [windowType, setWindowType] = useState(null);
-  const [movieId, setMovieId] = useState(null);
-  const [movieDetailsId, setMovieDetailsId] = useState(null);
-  const [sortingOption, setSortingOption] = useState(sortMovies[0]);
+  const [sortedMovies, setSortedMovies] = useState<Film[] | null>(null);
+  const [genre, setGenre] = useState<string>(movieFilters[0]);
+  const [windowType, setWindowType] = useState<string | null>(null);
+  const [movieId, setMovieId] = useState<string | number | null>(null);
+  const [movieDetailsId, setMovieDetailsId] = useState<string | number | null>(null);
+  const [sortingOption, setSortingOption] = useState<string>(sortMovies[0]);
 
   useEffect(() => {
     const sortedByGenreMovies =
@@ -86,7 +83,7 @@ const Home = () => {
       {windowType === "add" && (
         <MovieWindow closeWindow={closeWindow} title="add movie" />
       )}
-      {windowType === "edit" && (
+      {windowType === "edit" && movieId !== null && (
         <MovieWindow
           closeWindow={closeWindow}
           title="edit movie"
@@ -133,7 +130,7 @@ const Home = () => {
           <span>movies found</span>
         </div>
         <div className={styles.movies__found}>
-          {!isNil(sortedMovies) &&
+          {sortedMovies !== null &&
             sortedMovies.map((film: Film) => {
               return (
                 <Movie

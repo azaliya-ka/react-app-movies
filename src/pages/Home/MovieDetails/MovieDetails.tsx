@@ -2,16 +2,17 @@ import React, { useContext } from 'react';
 import { Context } from '../../../components/App';
 import { SearchButton } from '../../../images/icons';
 import { Icon } from '../../../components/Icon/Icon';
+import type { Film } from '../../../types/types';
 import styles from './MovieDetails.module.css';
 
 interface MovieDetailsTypes {
     onSearchClick: () => void,
-    movieId: string
+    movieId: string | number
 }
   
 const MovieDetails = ({ onSearchClick, movieId }: MovieDetailsTypes) => {
-  const movies = useContext(Context);
-  const movie = movies.find(film => film.id === movieId);
+  const movies: Film[] = useContext(Context);
+  const movie: Film | undefined = movies.find(film => film.id === movieId);
 
   return (
       <>
@@ -21,7 +22,8 @@ const MovieDetails = ({ onSearchClick, movieId }: MovieDetailsTypes) => {
                 <SearchButton />
             </span>
           </div>
-          <div className={styles.details}>
+          {movie && (
+            <div className={styles.details}>
             <img src={movie.picture} className={styles.image} />
             <div className={styles.text}>
                 <div className={styles.nameBlock}>
@@ -36,6 +38,7 @@ const MovieDetails = ({ onSearchClick, movieId }: MovieDetailsTypes) => {
                 <div className={styles.overview}>{movie.overview}</div>
             </div>
           </div>
+          )}
       </>
   );
 }

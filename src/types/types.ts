@@ -3,7 +3,7 @@ export type Film = {
   description: string,
   year: string,
   picture: Blob["type"],
-  id: 2,
+  id: number | string,
   genre: string,
   movieUrl: string,
   rating: string,

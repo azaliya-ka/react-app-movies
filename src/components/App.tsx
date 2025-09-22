@@ -5,7 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { Home } from '../pages/Home/Home';
 import { movies } from './MockedData';
 
-export const Context = createContext([]);
+export const Context = createContext(movies);
 
 class App extends Component {
     render() {
