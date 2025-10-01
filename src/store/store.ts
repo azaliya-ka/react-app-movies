@@ -5,17 +5,17 @@ const moviesSlice = createSlice({
   name: 'movies',
   initialState: movies,
   reducers: {
-    ADD_MOVIE: (state, action) => {
+    addMovie: (state, action) => {
       state.push(action.payload);
     },
-    UPDATE_MOVIE: (state, action) => {
+    updateMovie: (state, action) => {
         state.map(movie => {
             if (movie.id === action.payload.id) {
                 return movie = action.payload;
             }
         })
     },
-    DELETE_MOVIE: (state, action) => {
+    deleteMovie: (state, action) => {
         state.map((movie, movieId) => {
             if (movie.id === action.payload.id) {
                return state.splice(movieId, 1);
@@ -31,7 +31,9 @@ export const store = configureStore({
     },
 });
 
+export const { addMovie, updateMovie, deleteMovie } = moviesSlice.actions
+
 export type RootStateType = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type AppDispatchType = typeof store.dispatch
 
 export default store;

@@ -37,7 +37,6 @@ const Home = () => {
   }, [movieId])
 
   useEffect(() => {
-    // console.log("movies", movies);
     const sortedByGenreMovies =
       genre === movieFilters[0]
         ? [...movies]
