@@ -1,12 +1,12 @@
 import React from 'react';
-import { useToggle } from '../../../components/hooks';
+import { useToggle } from '../../../hooks';
 import { ContextMenu } from '../../../images/icons';
 import { ContextWindow } from './ContextWindow/ContextWindow';
-import type { Film } from '../../../types/types'
+import type { MovieType } from '../../../types/types'
 import styles from './Movie.module.css';
 
 interface MovieTypes {
-  film: Film,
+  film: MovieType,
   onEditMovieClick: () => void,
   onDeleteMovieClick: () => void,
   setFilmId: (id: string | number) => void,

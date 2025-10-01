@@ -1,28 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Context } from "../../components/App";
+import React, { useState, useEffect } from "react";
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
 import { Button, InputText } from "../../components";
 import { Movie } from "./Movie/Movie";
 import { Filters } from "./Filters/Filters";
-import { movieFilters, sortMovies } from "../../components/constants";
+import { movieFilters, sortMovies } from "../../constants";
 import { MovieWindow } from "../MovieWindow/MovieWindow";
 import { DeleteMovie } from "./DeleteMovie/DeleteMovie";
 import { MovieDetails } from "./MovieDetails/MovieDetails";
 import { Footer } from "../../components";
 import { Icon } from "../../components";
-import type { Film } from '../../types/types';
+import type { MovieType } from '../../types/types';
 import styles from "./Home.module.css";
 
-const compareYears = (a: Film, b: Film) => {
+const compareYears = (a: MovieType, b: MovieType) => {
   return Number(a.year) - Number(b.year);
 };
 
-const compareRating = (a: Film, b: Film) => {
+const compareRating = (a: MovieType, b: MovieType) => {
   return Number(a.rating) - Number(b.rating);
 };
 
 const Home = () => {
-  const movies = useContext(Context);
-  const [sortedMovies, setSortedMovies] = useState<Film[] | null>(null);
+  const movies: MovieType[] = useSelector((state: RootState) => state.movies);
+  const [sortedMovies, setSortedMovies] = useState<MovieType[] | null>(null);
   const [genre, setGenre] = useState<string>(movieFilters[0]);
   const [windowType, setWindowType] = useState<string | null>(null);
   const [movieId, setMovieId] = useState<string | number | null>(null);
@@ -44,7 +45,7 @@ const Home = () => {
       ];
       setSortedMovies(sortedByRatingMovies);
     }
-  }, [sortingOption, genre]);
+  }, [sortingOption, genre, movies]);
 
   const onSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortingOption(e.target.value);
@@ -131,7 +132,7 @@ const Home = () => {
         </div>
         <div className={styles.movies__found}>
           {sortedMovies !== null &&
-            sortedMovies.map((film: Film) => {
+            sortedMovies.map((film: MovieType) => {
               return (
                 <Movie
                   film={film}

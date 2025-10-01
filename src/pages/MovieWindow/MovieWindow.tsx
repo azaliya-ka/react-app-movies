@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
-import { Context } from '../../components/App';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../store/store';
 import { InputText, TextArea, Button, Select, DateInput } from '../../components'
 import { CloseButton } from '../../images/icons';
-import { genre } from '../../components/constants';
-import type { Film } from '../../types/types'
+import { genre } from '../../constants';
+import type { MovieType } from '../../types/types'
 import styles from './MovieWindow.module.css';
 
 interface MovieWindowTypes {
@@ -13,8 +14,8 @@ interface MovieWindowTypes {
 }
   
 const MovieWindow = ({ closeWindow, title, movieId } : MovieWindowTypes) => {
-  const movies: Film[] = useContext(Context);
-  const movie = movies.find((film: Film) => film.id === movieId);
+  const movies: MovieType[] = useSelector((state: RootState) => state.movies);
+  const movie = movies.find((film: MovieType) => film.id === movieId);
 
   return (
     <div className={styles.background}>

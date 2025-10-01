@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Context } from '../../../components/App';
+import { useSelector } from 'react-redux';
+import type { RootState } from '../../../store/store';
 import { SearchButton } from '../../../images/icons';
 import { Icon } from '../../../components/Icon/Icon';
-import type { Film } from '../../../types/types';
+import type { MovieType } from '../../../types/types';
 import styles from './MovieDetails.module.css';
 
 interface MovieDetailsTypes {
@@ -11,8 +12,8 @@ interface MovieDetailsTypes {
 }
   
 const MovieDetails = ({ onSearchClick, movieId }: MovieDetailsTypes) => {
-  const movies: Film[] = useContext(Context);
-  const movie: Film | undefined = movies.find(film => film.id === movieId);
+  const movies: MovieType[] = useSelector((state: RootState) => state.movies);
+  const movie: MovieType | undefined = movies.find(film => film.id === movieId);
 
   return (
       <>

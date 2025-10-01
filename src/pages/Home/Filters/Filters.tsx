@@ -1,6 +1,6 @@
 import React from 'react';
 import { Select } from '../../../components';
-import { movieFilters, sortMovies } from '../../../components/constants';
+import { movieFilters, sortMovies } from '../../../constants';
 import cn from 'classnames';
 import styles from './Filters.module.css';
 
