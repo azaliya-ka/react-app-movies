@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useToggle } from '../../../hooks';
 import { ContextMenu } from '../../../images/icons';
 import { ContextWindow } from './ContextWindow/ContextWindow';
@@ -16,6 +16,11 @@ interface MovieTypes {
 const Movie = ({ film , onEditMovieClick, onDeleteMovieClick, setFilmId, onCardClick } : MovieTypes) => {
     const [windowOpened, setWindowOpened] = useToggle();
 
+    const onMovieMenuClick = () => {
+      setFilmId(film.id);
+      setWindowOpened();
+    }
+
     return (
       <div className={styles.container}>
         <ContextWindow
@@ -23,12 +28,10 @@ const Movie = ({ film , onEditMovieClick, onDeleteMovieClick, setFilmId, onCardC
           setWindowOpened={setWindowOpened}
           onEditMovieClick={onEditMovieClick}
           onDeleteMovieClick={onDeleteMovieClick}
-          setFilmId={setFilmId}
-          id={film.id}
         />
         <span
           className={styles.icon}
-          onClick={setWindowOpened}
+          onClick={onMovieMenuClick}
         >
           <ContextMenu />
         </span>

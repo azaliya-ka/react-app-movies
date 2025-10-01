@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../../../store/store';
+import type { RootStateType } from '../../../store/store';
 import { SearchButton } from '../../../images/icons';
 import { Icon } from '../../../components/Icon/Icon';
 import type { MovieType } from '../../../types/types';
@@ -12,7 +12,7 @@ interface MovieDetailsTypes {
 }
   
 const MovieDetails = ({ onSearchClick, movieId }: MovieDetailsTypes) => {
-  const movies: MovieType[] = useSelector((state: RootState) => state.movies);
+  const movies: MovieType[] = useSelector((state: RootStateType) => state.movies);
   const movie: MovieType | undefined = movies.find(film => film.id === movieId);
 
   return (

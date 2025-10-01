@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
-import type { RootState } from '../../store/store';
+import type { RootStateType } from '../../store/store';
 import { Button, InputText } from "../../components";
 import { Movie } from "./Movie/Movie";
 import { Filters } from "./Filters/Filters";
@@ -22,15 +22,22 @@ const compareRating = (a: MovieType, b: MovieType) => {
 };
 
 const Home = () => {
-  const movies: MovieType[] = useSelector((state: RootState) => state.movies);
+  const movies: MovieType[] = useSelector((state: RootStateType) => state.movies);
   const [sortedMovies, setSortedMovies] = useState<MovieType[] | null>(null);
   const [genre, setGenre] = useState<string>(movieFilters[0]);
   const [windowType, setWindowType] = useState<string | null>(null);
-  const [movieId, setMovieId] = useState<string | number | null>(null);
   const [movieDetailsId, setMovieDetailsId] = useState<string | number | null>(null);
   const [sortingOption, setSortingOption] = useState<string>(sortMovies[0]);
+  const [movieId, setMovieId] = useState<string | number | null>(null);
+  const [movie, setMovie] = useState<MovieType | null | undefined>(null);
 
   useEffect(() => {
+    const currentMovie = movies.find((film: MovieType) => film.id === movieId);
+    setMovie(currentMovie);
+  }, [movieId])
+
+  useEffect(() => {
+    // console.log("movies", movies);
     const sortedByGenreMovies =
       genre === movieFilters[0]
         ? [...movies]
@@ -81,17 +88,19 @@ const Home = () => {
 
   return (
     <div className={styles.home__background}>
-      {windowType === "add" && (
+      {windowType === "add" && movie !== null && (
         <MovieWindow closeWindow={closeWindow} title="add movie" />
       )}
-      {windowType === "edit" && movieId !== null && (
+      {windowType === "edit" && movie !== null && (
         <MovieWindow
           closeWindow={closeWindow}
           title="edit movie"
-          movieId={movieId}
+          movie={movie}
         />
       )}
-      {windowType === "delete" && <DeleteMovie closeWindow={closeWindow} />}
+      {windowType === "delete" && movie !== null && (
+        <DeleteMovie closeWindow={closeWindow} movie={movie} />
+      )}
       {movieDetailsId ? (
         <div className={styles.details__block}>
           <MovieDetails
